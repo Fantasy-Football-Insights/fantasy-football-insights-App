@@ -71,14 +71,15 @@ Describe what the rest of the document contains and how it is organized.
 
 ### 2.1 Product Perspective
 
-Fantasy Football Insights is an idea based largely on existing fantasy football apps such as ESPN Fantasy Football, Sleeper, and Yahoo! Fantasy Football, among others, along with our developers passion for football. The idea is to improve upon ideas from these existed applications to create the best possible fantasy football assistance software as well as help users win their leagues.  
+Fantasy Football Insights is an idea based largely on existing fantasy football apps such as ESPN Fantasy Football, Sleeper, and Yahoo! Fantasy Football, among others, along with our developers passion for football. The idea is to improve upon ideas from these existed applications to create the best possible fantasy football assistance software as well as help users win their leagues.
 
 ### 2.2 Product Functions
 
-The Fantasy Football Insights software will perform and allow users to perform the following tasks: 
+The Fantasy Football Insights software will perform and allow users to perform the following tasks:
+
 - Predict the best possible fantasy team based on user's draft positioning
 - Provide trade evaluations based on team needs and future production
-- View players' weekly score projections for weeks 1-18 
+- View players' weekly score projections for weeks 1-18
 - Provide insight on which players users should pick up on waivers
 - Provide best possible lineups for each week based on matchups
 
@@ -93,7 +94,7 @@ This subsection should provide a general description of any other items that wil
 
 ### 2.4 User Characteristics
 
-Users of the Fantasy Football Insights software will largely be users that are interested in getting the upperhand in their fantasy football league. These users are serious about fantasy football and intend to win their leagues by utilizing top notch software to provide them with the best possible roster for their fantasy team. 
+Users of the Fantasy Football Insights software will largely be users that are interested in getting the upperhand in their fantasy football league. These users are serious about fantasy football and intend to win their leagues by utilizing top notch software to provide them with the best possible roster for their fantasy team.
 
 ### 2.5 Assumptions and Dependencies
 
@@ -108,15 +109,6 @@ Identify requirements that may be delayed until future versions of the system (e
 ## 3. Requirements
 
 > This section specifies the software product's requirements. Specify all of the software requirements to a level of detail sufficient to enable designers to design a software system to satisfy those requirements, and to enable testers to test that the software system satisfies those requirements.
-
-> The specific requirements should:
-
-- Be uniquely identifiable.
-- State the subject of the requirement (e.g., system, software, etc.) and what shall be done.
-- Optionally state the conditions and constraints, if any.
-- Describe every input (stimulus) into the software system, every output (response) from the software system, and all functions performed by the software system in response to an input or in support of an output.
-- Be verifiable (e.g., the requirement realization can be proven to the customer's satisfaction)
-- Conform to agreed upon syntax, keywords, and terms.
 
 ### 3.1 User Requirements
 
