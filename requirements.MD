@@ -3,7 +3,7 @@
 ## For Fantasy Football App
 
 Version 0.1  
-Prepared by Tien Hoang
+Prepared by Tien Hoang, Anthony Micco, Nicolas Ott, Austin Winger-Kailer, and Nicolas Winsen
 <organization>  
 <date created>
 
@@ -47,13 +47,13 @@ Prepared by Tien Hoang
 - 4 [Verification](#4-verification)
 - 5 [Appendixes](#5-appendixes)
 
-## Revision History
+<!-- ## Revision History
 
 | Name | Date | Reason For Changes | Version |
 | ---- | ---- | ------------------ | ------- |
 |      |      |                    |         |
 |      |      |                    |         |
-|      |      |                    |         |
+|      |      |                    |         | -->
 
 ## 1. Introduction
 
