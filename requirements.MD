@@ -75,7 +75,12 @@ Fantasy Football Insights is an idea based largely on existing fantasy football 
 
 ### 2.2 Product Functions
 
-Summarize the major functions the product must perform or must let the user perform. Details will be provided in Section 3, so only a high level summary (such as a bullet list) is needed here. Organize the functions to make them understandable to any reader of the SRS. A picture of the major groups of related requirements and how they relate, such as a top level data flow diagram or object class diagram, is often effective.
+The Fantasy Football Insights software will perform and allow users to perform the following tasks: 
+- Predict the best possible fantasy team based on user's draft positioning
+- Provide trade evaluations based on team needs and future production
+- View players' weekly score projections for weeks 1-18 
+- Provide insight on which players users should pick up on waivers
+- Provide best possible lineups for each week based on matchups
 
 ### 2.3 Product Constraints
 
