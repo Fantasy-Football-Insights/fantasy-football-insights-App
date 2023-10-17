@@ -76,11 +76,7 @@ The document as a whole serves as a blueprint for the "Fantasy Football Insights
 
 ### 2.1 Product Perspective
 
-<<<<<<< Updated upstream
 Fantasy Football Insights is an idea based largely on existing fantasy football apps such as ESPN Fantasy Football, Sleeper, and Yahoo! Fantasy Football, among others, along with our developers passion for football. The idea is to improve upon ideas from these existed applications to create the best possible fantasy football assistance software as well as help users win their leagues.
-=======
-Fantasy Football Insights is an idea based largely on existing fantasy football apps such as ESPN Fantasy Football, Sleeper, and Yahoo! Fantasy Football, among others, along with our developers' passion for football. The idea is to improve upon ideas from these existed applications to create the best possible fantasy football assistance software as well as help users win their leagues.  
->>>>>>> Stashed changes
 
 ### 2.2 Product Functions
 
@@ -117,9 +113,21 @@ In developing Fantasy Football Insights, we rely on various elements to function
 
 ### 2.6 Apportioning of Requirements
 
-Apportion the software requirements to software elements. For requirements that will require implementation over multiple software elements, or when allocation to a software element is initially undefined, this should be so stated. A cross reference table by function and software element should be used to summarize the apportioning.
+Required elements that will be developed in the backend include: 
+- User registration
+- User authentication and authorization
+- Team creation 
+- Push notification 
 
-Identify requirements that may be delayed until future versions of the system (e.g., blocks and/or increments).
+Required elements that will be developed in the frontend include:
+- Team creation
+- User profile management
+- Trade evalutaion 
+
+Future Enhancements (In potential future versions): 
+- Waiver wire analysis (Suggest players to add based on team needs)
+- Trade suggestions (Analyze league and provide potential trade)
+- Up-to-date fantasy football news (Provide real-time updates about player injuries, trades, etc.)
 
 ## 3. Requirements
 
