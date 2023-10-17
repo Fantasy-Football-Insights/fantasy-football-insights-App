@@ -2,10 +2,10 @@
 
 ## For Fantasy Football App
 
-Version 0.1  
+Version 0.1
 Prepared by Tien Hoang, Anthony Micco, Nicolas Ott, Austin Winger-Kailer, and Nicolas Winsen
-<organization>  
-<date created>
+`<organization>`
+`<date created>`
 
 # Table of Contents
 
@@ -45,25 +45,31 @@ Prepared by Tien Hoang, Anthony Micco, Nicolas Ott, Austin Winger-Kailer, and Ni
 
 ## 1. Introduction
 
-> This section should provide an overview of the entire document
-
 ### 1.1 Document Purpose
 
-Describe the purpose of the SRS and its intended audience.
+The purpose of this document is to outline the software requirements of "Fantasy Football Insights".
 
 ### 1.2 Product Scope
 
-Identify the product whose software requirements are specified in this document, including the revision or release number. Explain what the product that is covered by this SRS will do, particularly if this SRS describes only part of the system or a single subsystem. Provide a short description of the software being specified and its purpose, including relevant benefits, objectives, and goals. Relate the software to corporate goals or business strategies. If a separate vision and scope document is available, refer to it rather than duplicating its contents here.
+The product being outlined is "Fantasy Football Insights", version 1.0. The product will allow for analysis of the best possible draft given draft position and trade analysis. This document will describe the whole system. The system will provide ease of access to information regarding the best avenue to your fantasy football season and help players make the best decisions for their league. The system will allow fantasy players to gain an edge over their leaguemates and allow for best possible performance.
 
 ### 1.3 Definitions, Acronyms and Abbreviations
 
 ### 1.4 References
 
-List any other documents or Web addresses to which this SRS refers. These may include user interface style guides, contracts, standards, system requirements specifications, use case documents, or a vision and scope document. Provide enough information so that the reader could access a copy of each reference, including title, author, version number, date, and source or location.
+[ESPN Fantasy API](http://espn-fantasy-football-api.s3-website.us-east-2.amazonaws.com/) - Allows developers to access user, league, and player information.
 
 ### 1.5 Document Overview
 
-Describe what the rest of the document contains and how it is organized.
+The rest of the document will include the product overview (Section 2), which will describe functions, perspective, constraints, user characteristics, assumptions, and dependencies.
+
+The requirements section (Section 3) will discuss external interfaces, functional requirements, quality of service, compliance, design, and implementation. It is divided into subsections that details more specific requirements for the system.
+
+The verification section will describe the methods that will be used to verify, test, and validate that the software is meeting the requirements.
+
+Lastly, the appendix provides additional information such as algorithms, sources, security measures, UI design, outside sources, and testing and quality assurance processes.
+
+The document as a whole serves as a blueprint for the "Fantasy Football Insights" app, covering purpose, scope, requirements, and quality standards. Provides structure for developers and stakeholders to understand specs and requirements.
 
 ## 2. Product Overview
 
@@ -121,6 +127,7 @@ Identify requirements that may be delayed until future versions of the system (e
 > This section provides the verification approaches and methods planned to qualify the software. The information items for verification are recommended to be given in a parallel manner with the requirement items in Section 3. The purpose of the verification process is to provide objective evidence that a system or system element fulfills its specified requirements and characteristics.
 
 <!-- TODO: give more guidance, similar to section 3 -->
+
 <!-- ieee 15288:2015 -->
 
 ## 5. Appendix
