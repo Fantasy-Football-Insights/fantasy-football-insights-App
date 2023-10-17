@@ -27,7 +27,13 @@ Prepared by Tien Hoang, Anthony Micco, Nicolas Ott, Austin Winger-Kailer, and Ni
   - 3.1 [User Requirements](#31-user-requirements)
   - 3.2 [System Requirements](#32-system-requirements)
 - 4 [Verification](#4-verification)
-- 5 [Appendixes](#5-appendixes)
+- 5 [Appendix](#5-appendix)
+  - 5.1 [Data Sources](#51-data-sources)
+  - 5.2 [Algorithms and Methodology](#52-algorithms-and-methodology)
+  - 5.3 [User Interface Design](#53-user-interface-design)
+  - 5.4 [System Architecture](#54-system-architecture)
+  - 5.5 [Data Privacy and Security](#55-data-privacy-and-security)
+  - 5.6 [Testing and Quality Assurance](#56-testing-and-quality-assurance)
 
 <!-- ## Revision History
 
@@ -120,4 +126,57 @@ Identify requirements that may be delayed until future versions of the system (e
 <!-- TODO: give more guidance, similar to section 3 -->
 <!-- ieee 15288:2015 -->
 
-## 5. Appendixes
+## 5. Appendix
+
+In addition to the core functionalities outlined in the previous sections, the following appendixes provide supplementary information and context for the development of the software.
+
+### 5.1 Data Sources
+
+Data will be retrieved from the following source:
+
+- [ESPN Fantasy Football API](http://espn-fantasy-football-api.s3-website.us-east-2.amazonaws.com/)
+
+From this API, we can retrieve necessary information about a users fantasy football league, including:
+
+- Draft order of every team in the league.
+- The players available to draft.
+- Stats that each player has accumulated in previous seasons.
+
+### 5.2 Algorithms and Methodology
+
+We will use comparison algorithms to determine the best available player to draft. The algorithm will compare the stats of each player and determine which player is the best available. The algorithm will also take into account the position of the player and the position of the team that is drafting. For example, if a team needs a quarterback, the algorithm will prioritize quarterbacks over other positions.
+
+### 5.3 User Interface Design
+
+We will be desigining the UI using the [Gluestack-ui](https://gluestack.io/) library. The UI will be designed to be intuitive and easy to use. The UI will be designed to be responsive and work on both iOS and Android devices.
+
+Our [Figma](https://www.figma.com/) mockup will be available here once it is completed.
+
+### 5.4 System Architecture
+
+The system architecture appendix outlines the high-level architecture of the software. It describes the technology stack, databases, and infrastructure components that will be used to develop and deploy the application. Additionally, it may include information about scalability, security measures, and disaster recovery plans.
+
+The following technologies will be used to develop the software:
+
+- [React Native](https://reactnative.dev/) - Frontend framework
+- [Expo](https://docs.expo.dev/) - React Native development environment
+- [Gluestack-ui](https://gluestack.io/) - React Native UI library
+- [NestJS](https://docs.nestjs.com/) - Backend framework
+- [MySQL](https://www.mysql.com/) - Database
+
+### 5.5 Data Privacy and Security
+
+All User data is stored in a MySQL database. The database is password protected and only accessible by the application. The application will only request the data necessary to provide the user with the requested information. The application will not store any user data locally on the device.
+
+Sensitive User data is encrypted using the [bcrypt](https://www.npmjs.com/package/bcrypt) library. This includes the user's and password. The application will not store the user's password in plain text.
+
+### 5.6 Testing and Quality Assurance
+
+This section provides an overview of the testing and quality assurance processes that will be followed during the development of the software. It may include test cases, testing methodologies, and quality assurance standards.
+
+Testing on the backend will be performed using the [Jest](https://jestjs.io/) testing framework. The following tests will be performed:
+
+- Authentication
+- Account Related Actions
+- Draft Related Actions
+- Algorithm Related Actions
