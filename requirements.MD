@@ -73,11 +73,14 @@ The document as a whole serves as a blueprint for the "Fantasy Football Insights
 
 ## 2. Product Overview
 
-> This section should describe the general factors that affect the product and its requirements. This section does not state specific requirements. Instead, it provides a background for those requirements, which are defined in detail in Section 3, and makes them easier to understand.
 
 ### 2.1 Product Perspective
 
+<<<<<<< Updated upstream
 Fantasy Football Insights is an idea based largely on existing fantasy football apps such as ESPN Fantasy Football, Sleeper, and Yahoo! Fantasy Football, among others, along with our developers passion for football. The idea is to improve upon ideas from these existed applications to create the best possible fantasy football assistance software as well as help users win their leagues.
+=======
+Fantasy Football Insights is an idea based largely on existing fantasy football apps such as ESPN Fantasy Football, Sleeper, and Yahoo! Fantasy Football, among others, along with our developers' passion for football. The idea is to improve upon ideas from these existed applications to create the best possible fantasy football assistance software as well as help users win their leagues.  
+>>>>>>> Stashed changes
 
 ### 2.2 Product Functions
 
@@ -91,12 +94,13 @@ The Fantasy Football Insights software will perform and allow users to perform t
 
 ### 2.3 Product Constraints
 
-This subsection should provide a general description of any other items that will limit the developer’s options. These may include:
+While we at Fantasy Football Insights work to develop the best possible fantasy football app for our consumers, we limitations to what we can do.These constraints include:
 
-- Interfaces to users, other applications or hardware.
-- Quality of service constraints.
-- Standards compliance.
-- Constraints around design or implementation.
+- The availability of data from the NFL and our API.
+- Platform compatability (Our app works only on IOS and Android)
+- Must have a stable internet connection to use our product
+- Optimal for fantasy leagues that utilize points-per-reception (PPR) scoring
+- We only have English language capabilities at this point
 
 ### 2.4 User Characteristics
 
@@ -104,7 +108,12 @@ Users of the Fantasy Football Insights software will largely be users that are i
 
 ### 2.5 Assumptions and Dependencies
 
-List any assumed factors (as opposed to known facts) that could affect the requirements stated in the SRS. These could include third-party or commercial components that you plan to use, issues around the development or operating environment, or constraints. The project could be affected if these assumptions are incorrect, are not shared, or change. Also identify any dependencies the project has on external factors, such as software components that you intend to reuse from another project, unless they are already documented elsewhere (for example, in the vision and scope document or the project plan).
+In developing Fantasy Football Insights, we rely on various elements to function properly in order for our software to function properly as well. These include: 
+- Accurate data from our API 
+- The availability of our API and proper functionality
+- Active user engagement and feedback from users
+- Depends on the type of operating system (IOS and Android)
+- Integration of fantasy app (ESPN Fantasy Football)   
 
 ### 2.6 Apportioning of Requirements
 
