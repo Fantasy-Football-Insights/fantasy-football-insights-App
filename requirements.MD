@@ -3,7 +3,7 @@
 ## For Fantasy Football App
 
 Version 0.1  
-Prepared by Tien Hoang
+Prepared by Tien Hoang, Anthony Micco, Nicolas Ott, Austin Winger-Kailer, and Nicolas Winsen
 <organization>  
 <date created>
 
