@@ -170,6 +170,8 @@ All User data is stored in a MySQL database. The database is password protected 
 
 Sensitive User data is encrypted using the [bcrypt](https://www.npmjs.com/package/bcrypt) library. This includes the user's and password. The application will not store the user's password in plain text.
 
+JWTs are used to authenticate users. The JWTs are signed using a secret key that is stored in an environment variable. The JWTs are only valid for 7 days. After 7 days, the user will be required to log in again.
+
 ### 5.6 Testing and Quality Assurance
 
 This section provides an overview of the testing and quality assurance processes that will be followed during the development of the software. It may include test cases, testing methodologies, and quality assurance standards.
