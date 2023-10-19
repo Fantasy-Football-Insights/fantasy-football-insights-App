@@ -2,7 +2,6 @@
 
 ## For Fantasy Football App
 
-test
 Version 0.1
 Prepared by Tien Hoang, Anthony Micco, Nicolas Ott, Austin Winger-Kailer, and Nicolas Winsen
 `<organization>`
