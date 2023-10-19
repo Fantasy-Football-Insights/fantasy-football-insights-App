@@ -141,7 +141,10 @@ Future Enhancements (In potential future versions):
 
 ## 4. Verification
 
-> This section provides the verification approaches and methods planned to qualify the software. The information items for verification are recommended to be given in a parallel manner with the requirement items in Section 3. The purpose of the verification process is to provide objective evidence that a system or system element fulfills its specified requirements and characteristics.
+Verification methods include:
+
+- Periodic reviews of the requirements document to ensure consistency, clarity, and that the product meets the objectives and expected functions
+- Typescript driver files to test backend functions
 
 <!-- TODO: give more guidance, similar to section 3 -->
 
