@@ -4,11 +4,8 @@
 
 
 Version 1.0
+
 Prepared by Tien Hoang, Anthony Micco, Nicolas Ott, Austin Winger-Kailer, and Nicolas Winsen
-`<organization>`
-`<date created>`
-`<organization>`
-`<date created>`
 
 # Table of Contents
 
