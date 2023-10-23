@@ -175,7 +175,7 @@ Operating System: needs to be on iOS11/Android 7.0 "Nougat" or later
 Verification methods include:
 
 - Periodic reviews of the requirements document to ensure consistency, clarity, and that the product meets the objectives and expected functions
-- Driver files to test backend functions. See [Section 5.6](#5.6-testing-and-quality-assurance) for more information.
+- Driver files to test backend functions. See [Section 5.6](#56-testing-and-quality-assurance) for more information.
 
 ## 5. Appendix
 
