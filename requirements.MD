@@ -5,11 +5,11 @@
 
 Version 1.0
 
-Prepared by Tien Hoang, Anthony Micco, Nicolas Ott, Austin Winger-Kailer, and Nicolas Winsen
+Prepared by Tien Hoang, Anthony Micco, Nicolas Ott, Austin Winger-Kailer, and Nicholas Winsen
 
 # Table of Contents
 
-- [Revision History](#revision-history)
+<!-- - [Revision History](#revision-history) -->
 - 1 [Introduction](#1-introduction)
   - 1.1 [Document Purpose](#11-document-purpose)
   - 1.2 [Product Scope](#12-product-scope)
@@ -48,7 +48,6 @@ Prepared by Tien Hoang, Anthony Micco, Nicolas Ott, Austin Winger-Kailer, and Ni
 ### 1.1 Document Purpose
 
 The purpose of this document is to outline the software requirements of "Fantasy Football Insights".
-The purpose of this document is to outline the software requirements of "Fantasy Football Insights".
 
 ### 1.2 Product Scope
 
@@ -56,9 +55,31 @@ The product being outlined is "Fantasy Football Insights", version 1.0. The prod
 
 ### 1.3 Definitions, Acronyms and Abbreviations
 
+To understand the "Fantasy Football Insights" software, there are a variety of terms that one needs to understand. These terms include: 
+
+  - Waiver Wire: The method of acquring players. The order is determined by reverse-order to league record. (Worst has first priority, second worst has second, so on and so forth)
+  - Flex: An additional roster spot on each team where the user can play an additional running back, wide receiver or tight end. 
+  - BYE: A term used to describe when a team gets a rest week and does not play for a week. 
+  - PPR: Abbreviation for Points Per Reception, meaning each player receives a point for each pass they catch in the game. 
+  - QB: Abbreviation for the quarterback position.
+  - RB: Abbreviation for the running back position.
+  - WR: Abbreviation for the wide receiver position.
+  - TE: Abbreviation for the tight end position. 
+  - D/ST: Abbreviation for defense and special teams.
+  - K: Abbreviation for the kicker position.
+  - FG: Abbreviation for field goal.
+  - XP: Abbreviation for extra point.
+  - TD: Abbreviation for touchdown.
+  - YD(s): Abbreviation for yard(s).
+  - REC: Abbreviation for receptions.
+  - INT: Abbreviation for interception.
+  - FUM: Abbreviation for fumble.
+  - TOT: Abbreviation for total.
+  - AVG: Abbreviation for average. 
+
+  Having a better understanding of the terms and abbreviations listed above will help give users a better understanding of our software and make it more useful.  
 ### 1.4 References
 
-[ESPN Fantasy API](http://espn-fantasy-football-api.s3-website.us-east-2.amazonaws.com/) - Allows developers to access user, league, and player information.
 [ESPN Fantasy API](http://espn-fantasy-football-api.s3-website.us-east-2.amazonaws.com/) - Allows developers to access user, league, and player information.
 
 ### 1.5 Document Overview
@@ -86,12 +107,12 @@ The Fantasy Football Insights software will perform and allow users to perform t
 - Predict the best possible fantasy team based on user's draft positioning
 - Provide trade evaluations based on team needs and future production
 - View players' weekly score projections for weeks 1-18
-- Provide insight on which players users should pick up on waivers
 - Provide best possible lineups for each week based on matchups
+- Provide the option to prioritize a certain position in a draft
 
 ### 2.3 Product Constraints
 
-While we at Fantasy Football Insights work to develop the best possible fantasy football app for our consumers, we limitations to what we can do.These constraints include:
+While we at Fantasy Football Insights work to develop the best possible fantasy football app for our consumers, there are limitations to what we can do. These constraints include:
 
 - The availability of data from the NFL and our API.
 - Platform compatability (Our app works only on IOS and Android)
@@ -133,20 +154,14 @@ Future Enhancements (In potential future versions):
 - Waiver wire analysis (Suggest players to add based on team needs)
 - Trade suggestions (Analyze league and provide potential trade)
 - Up-to-date fantasy football news (Provide real-time updates about player injuries, trades, etc.)
-Future Enhancements (In potential future versions): 
-- Waiver wire analysis (Suggest players to add based on team needs)
-- Trade suggestions (Analyze league and provide potential trade)
-- Up-to-date fantasy football news (Provide real-time updates about player injuries, trades, etc.)
 
 ## 3. Requirements
 
-Software Requirements:
-
-This software should give the user the best possible fantasy football team to draft based on the players position in the draft. The prorgram will base all of it's data off of the ESPN fantasy football API which consists of every single players statistics from the year prior. The algorithm will go mainly based off of each player's statistics from the year prior, such as points scored, average points, what round they were drafted in, and their roster percentage.
+This software should give the user the best possible fantasy football team to draft based on the players position in the draft. The prorgram will base all of it's data off of the ESPN fantasy football API which consists of every single players statistics from the year prior. The algorithm will go mainly based off of each player's statistics from the year prior, such as points scored, average points, what round they were drafted in, and their roster percentage (the percentage of fantasy teams or leagues that have a particular player on their roster).
 
 ### 3.1 User Requirements
 
-The user will have the app on their mobile device and the application will greet the user and ask the user for the specifics of the league format, such as how many teams are in the league, point format, and draft type. We would also like to implement a feature that involves prioritizing drafting a specific position earlier (or later) in the draft. For example, if you want to draft a quarterback earlier/later than normal, there should be an option to set your preference for position and the round you want to draft them in. 
+The user will have the app on their mobile device and the application will greet the user and ask the user for the specifics of the league format, such as how many teams are in the league, point format, and draft type. A feature that involves prioritizing drafting a specific position earlier (or later) in the draft will also be implemented. For example, if you want to draft a quarterback earlier/later than normal, there should be an option to set your preference for position and the round you want to draft them in. 
 
 
 ### 3.2 System Requirements
@@ -155,22 +170,16 @@ The systems that will be required for the fantasy football are as followed.
 Device: Iphone 8/Samsung Galaxy S8 or any device that is comparable.  
 Operating System: needs to be on iOS11/Android 7.0 "Nougat" or later
 
-<!-- TODO: come up with a description -->
-
 ## 4. Verification
 
 Verification methods include:
 
 - Periodic reviews of the requirements document to ensure consistency, clarity, and that the product meets the objectives and expected functions
-- Typescript driver files to test backend functions
-
-<!-- TODO: give more guidance, similar to section 3 -->
-
-<!-- ieee 15288:2015 -->
+- Driver files to test backend functions. See [Section 5.6](#56-testing-and-quality-assurance) for more information.
 
 ## 5. Appendix
 
-In addition to the core functionalities outlined in the previous sections, the following appendixes provide supplementary information and context for the development of the software.
+In addition to the core functionalities outlined in the previous sections, the following appendices provide supplementary information and context for the development of the software.
 
 ### 5.1 Data Sources
 
@@ -178,7 +187,7 @@ Data will be retrieved from the following source:
 
 - [ESPN Fantasy Football API](http://espn-fantasy-football-api.s3-website.us-east-2.amazonaws.com/)
 
-From this API, we can retrieve necessary information about a users fantasy football league, including:
+From this API, we can retrieve necessary information about a user's fantasy football league, including:
 
 - Draft order of every team in the league.
 - The players available to draft.
@@ -196,7 +205,7 @@ Our [Figma](https://www.figma.com/) mockup will be available here once it is com
 
 ### 5.4 System Architecture
 
-The system architecture appendix outlines the high-level architecture of the software. It describes the technology stack, databases, and infrastructure components that will be used to develop and deploy the application. Additionally, it may include information about scalability, security measures, and disaster recovery plans.
+The system architecture appendix outlines the high-level architecture of the software. It describes the technology stack, databases, and infrastructure components that will be used to develop the application. 
 
 The following technologies will be used to develop the software:
 
@@ -208,9 +217,9 @@ The following technologies will be used to develop the software:
 
 ### 5.5 Data Privacy and Security
 
-All User data is stored in a MySQL database. The database is password protected and only accessible by the application. The application will only request the data necessary to provide the user with the requested information. The application will not store any user data locally on the device.
+All user data is stored in a MySQL database. The database is password protected and only accessible by the application. The application will only request the data necessary to provide the user with the requested information. The application will not store any user data locally on the device.
 
-Sensitive User data is encrypted using the [bcrypt](https://www.npmjs.com/package/bcrypt) library. This includes the user's and password. The application will not store the user's password in plain text.
+Sensitive user data is encrypted using the [bcrypt](https://www.npmjs.com/package/bcrypt) library. This includes the user's password. The application will not store the user's password in plain text.
 
 ### 5.6 Testing and Quality Assurance
 
