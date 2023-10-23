@@ -2,8 +2,8 @@
 
 ## For Fantasy Football App
 
-Version 0.1
-Version 0.1
+
+Version 1.0
 Prepared by Tien Hoang, Anthony Micco, Nicolas Ott, Austin Winger-Kailer, and Nicolas Winsen
 `<organization>`
 `<date created>`
@@ -88,7 +88,6 @@ The document as a whole serves as a blueprint for the "Fantasy Football Insights
 
 ## 2. Product Overview
 
-
 ### 2.1 Product Perspective
 
 Fantasy Football Insights is an idea based largely on existing fantasy football apps such as ESPN Fantasy Football, Sleeper, and Yahoo! Fantasy Football, among others, along with our developers passion for football. The idea is to improve upon ideas from these existed applications to create the best possible fantasy football assistance software as well as help users win their leagues.
@@ -134,43 +133,40 @@ Users of the Fantasy Football Insights software will largely be users that are i
 
 ### 2.5 Assumptions and Dependencies
 
-In developing Fantasy Football Insights, we rely on various elements to function properly in order for our software to function properly as well. These include: 
-- Accurate data from our API 
+In developing Fantasy Football Insights, we rely on various elements to function properly in order for our software to function properly as well. These include:
+
+- Accurate data from our API
 - The availability of our API and proper functionality
 - Active user engagement and feedback from users
 - Depends on the type of operating system (IOS and Android)
 - Integration of fantasy app (ESPN Fantasy Football)   
-In developing Fantasy Football Insights, we rely on various elements to function properly in order for our software to function properly as well. These include: 
-- Accurate data from our API 
-- The availability of our API and proper functionality
-- Active user engagement and feedback from users
-- Depends on the type of operating system (IOS and Android)
-- Integration of fantasy app (ESPN Fantasy Football)   
+
 
 ### 2.6 Apportioning of Requirements
 
+Required elements that will be developed in the backend include:
+
+- User registration
+- User authentication and authorization
+- Team creation
+- Push notification
+
+Required elements that will be developed in the frontend include:
+
+- Team creation
+- User profile management
+- Trade evalutaion 
+
 Required elements that will be developed in the backend include: 
+
 - User registration
 - User authentication and authorization
 - Team creation 
 - Push notification 
 
-Required elements that will be developed in the frontend include:
-- Team creation
-- User profile management
-- Trade evalutaion 
-Required elements that will be developed in the backend include: 
-- User registration
-- User authentication and authorization
-- Team creation 
-- Push notification 
 
-Required elements that will be developed in the frontend include:
-- Team creation
-- User profile management
-- Trade evalutaion 
+Future Enhancements (In potential future versions):
 
-Future Enhancements (In potential future versions): 
 - Waiver wire analysis (Suggest players to add based on team needs)
 - Trade suggestions (Analyze league and provide potential trade)
 - Up-to-date fantasy football news (Provide real-time updates about player injuries, trades, etc.)
@@ -200,7 +196,10 @@ Operating System: needs to be on iOS11/Android 7.0 "Nougat" or later
 
 ## 4. Verification
 
-> This section provides the verification approaches and methods planned to qualify the software. The information items for verification are recommended to be given in a parallel manner with the requirement items in Section 3. The purpose of the verification process is to provide objective evidence that a system or system element fulfills its specified requirements and characteristics.
+Verification methods include:
+
+- Periodic reviews of the requirements document to ensure consistency, clarity, and that the product meets the objectives and expected functions
+- Typescript driver files to test backend functions
 
 <!-- TODO: give more guidance, similar to section 3 -->
 
