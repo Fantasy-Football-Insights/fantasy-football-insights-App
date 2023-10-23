@@ -56,6 +56,29 @@ The product being outlined is "Fantasy Football Insights", version 1.0. The prod
 
 ### 1.3 Definitions, Acronyms and Abbreviations
 
+To understand the "Fantasy Football Insights" software, there are a variety of terms that one needs to understand. These terms include: 
+
+  - Waiver Wire: The method of acquring players. The order is determined by reverse-order to league record. (Worst has first priority, second worst has second, so on and so forth)
+  - Flex: An additional roster spot on each team where the user can play an additional running back, wide receiver or tight end. 
+  - BYE: A term used to describe when a team gets a rest week and do not play for a week. 
+  - PPR: Acronym for Points Per Reception, meaning each player receives a point for each pass they catch in the game. 
+  - QB: Abbreviation for the quarterback position.
+  - RB: Abbreviation for the running back position.
+  - WR: Abbreviation for the wide receiver position.
+  - TE: Abbreviation for the tight end position. 
+  - D/ST: Abbreviation for defense and special teams.
+  - K: Abbreivation for the kicker position.
+  - FG: Abbreviation for field goal.
+  - XP: Abbreviation for extra point.
+  - TD: Abbreviation for touchdown.
+  - YD(s): Abbreviation for yard(s).
+  - REC: Abbreviation for receptions.
+  - INT: Abbreviation for interception.
+  - FUM: Abbreviation for fumble.
+  - TOT: Abbreviation for total.
+  - AVG: Abbreviation for average. 
+
+  Having a better understanding of the terms and abbreviations listed above will help give users a better understanding of our software and make it more useful.  
 ### 1.4 References
 
 [ESPN Fantasy API](http://espn-fantasy-football-api.s3-website.us-east-2.amazonaws.com/) - Allows developers to access user, league, and player information.
