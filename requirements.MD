@@ -2,10 +2,10 @@
 
 ## For Fantasy Football App
 
-Version 0.1  
+Version 0.1
 Prepared by Tien Hoang, Anthony Micco, Nicolas Ott, Austin Winger-Kailer, and Nicolas Winsen
-<organization>  
-<date created>
+`<organization>`
+`<date created>`
 
 # Table of Contents
 
@@ -45,77 +45,106 @@ Prepared by Tien Hoang, Anthony Micco, Nicolas Ott, Austin Winger-Kailer, and Ni
 
 ## 1. Introduction
 
-> This section should provide an overview of the entire document
-
 ### 1.1 Document Purpose
 
-Describe the purpose of the SRS and its intended audience.
+The purpose of this document is to outline the software requirements of "Fantasy Football Insights".
 
 ### 1.2 Product Scope
 
-Identify the product whose software requirements are specified in this document, including the revision or release number. Explain what the product that is covered by this SRS will do, particularly if this SRS describes only part of the system or a single subsystem. Provide a short description of the software being specified and its purpose, including relevant benefits, objectives, and goals. Relate the software to corporate goals or business strategies. If a separate vision and scope document is available, refer to it rather than duplicating its contents here.
+The product being outlined is "Fantasy Football Insights", version 1.0. The product will allow for analysis of the best possible draft given draft position and trade analysis. This document will describe the whole system. The system will provide ease of access to information regarding the best avenue to your fantasy football season and help players make the best decisions for their league. The system will allow fantasy players to gain an edge over their leaguemates and allow for best possible performance.
 
 ### 1.3 Definitions, Acronyms and Abbreviations
 
 ### 1.4 References
 
-List any other documents or Web addresses to which this SRS refers. These may include user interface style guides, contracts, standards, system requirements specifications, use case documents, or a vision and scope document. Provide enough information so that the reader could access a copy of each reference, including title, author, version number, date, and source or location.
+[ESPN Fantasy API](http://espn-fantasy-football-api.s3-website.us-east-2.amazonaws.com/) - Allows developers to access user, league, and player information.
 
 ### 1.5 Document Overview
 
-Describe what the rest of the document contains and how it is organized.
+The rest of the document will include the product overview (Section 2), which will describe functions, perspective, constraints, user characteristics, assumptions, and dependencies.
+
+The requirements section (Section 3) will discuss external interfaces, functional requirements, quality of service, compliance, design, and implementation. It is divided into subsections that details more specific requirements for the system.
+
+The verification section will describe the methods that will be used to verify, test, and validate that the software is meeting the requirements.
+
+Lastly, the appendix provides additional information such as algorithms, sources, security measures, UI design, outside sources, and testing and quality assurance processes.
+
+The document as a whole serves as a blueprint for the "Fantasy Football Insights" app, covering purpose, scope, requirements, and quality standards. Provides structure for developers and stakeholders to understand specs and requirements.
 
 ## 2. Product Overview
 
-> This section should describe the general factors that affect the product and its requirements. This section does not state specific requirements. Instead, it provides a background for those requirements, which are defined in detail in Section 3, and makes them easier to understand.
 
 ### 2.1 Product Perspective
 
-Fantasy Football Insights is an idea based largely on existing fantasy football apps such as ESPN Fantasy Football, Sleeper, and Yahoo! Fantasy Football, among others, along with our developers passion for football. The idea is to improve upon ideas from these existed applications to create the best possible fantasy football assistance software as well as help users win their leagues.  
+Fantasy Football Insights is an idea based largely on existing fantasy football apps such as ESPN Fantasy Football, Sleeper, and Yahoo! Fantasy Football, among others, along with our developers passion for football. The idea is to improve upon ideas from these existed applications to create the best possible fantasy football assistance software as well as help users win their leagues.
 
 ### 2.2 Product Functions
 
-Summarize the major functions the product must perform or must let the user perform. Details will be provided in Section 3, so only a high level summary (such as a bullet list) is needed here. Organize the functions to make them understandable to any reader of the SRS. A picture of the major groups of related requirements and how they relate, such as a top level data flow diagram or object class diagram, is often effective.
+The Fantasy Football Insights software will perform and allow users to perform the following tasks:
+
+- Predict the best possible fantasy team based on user's draft positioning
+- Provide trade evaluations based on team needs and future production
+- View players' weekly score projections for weeks 1-18
+- Provide insight on which players users should pick up on waivers
+- Provide best possible lineups for each week based on matchups
 
 ### 2.3 Product Constraints
 
-This subsection should provide a general description of any other items that will limit the developer’s options. These may include:
+While we at Fantasy Football Insights work to develop the best possible fantasy football app for our consumers, we limitations to what we can do.These constraints include:
 
-- Interfaces to users, other applications or hardware.
-- Quality of service constraints.
-- Standards compliance.
-- Constraints around design or implementation.
+- The availability of data from the NFL and our API.
+- Platform compatability (Our app works only on IOS and Android)
+- Must have a stable internet connection to use our product
+- Optimal for fantasy leagues that utilize points-per-reception (PPR) scoring
+- We only have English language capabilities at this point
 
 ### 2.4 User Characteristics
 
-Users of the Fantasy Football Insights software will largely be users that are interested in getting the upperhand in their fantasy football league. These users are serious about fantasy football and intend to win their leagues by utilizing top notch software to provide them with the best possible roster for their fantasy team. 
+Users of the Fantasy Football Insights software will largely be users that are interested in getting the upperhand in their fantasy football league. These users are serious about fantasy football and intend to win their leagues by utilizing top notch software to provide them with the best possible roster for their fantasy team.
 
 ### 2.5 Assumptions and Dependencies
 
-List any assumed factors (as opposed to known facts) that could affect the requirements stated in the SRS. These could include third-party or commercial components that you plan to use, issues around the development or operating environment, or constraints. The project could be affected if these assumptions are incorrect, are not shared, or change. Also identify any dependencies the project has on external factors, such as software components that you intend to reuse from another project, unless they are already documented elsewhere (for example, in the vision and scope document or the project plan).
+In developing Fantasy Football Insights, we rely on various elements to function properly in order for our software to function properly as well. These include: 
+- Accurate data from our API 
+- The availability of our API and proper functionality
+- Active user engagement and feedback from users
+- Depends on the type of operating system (IOS and Android)
+- Integration of fantasy app (ESPN Fantasy Football)   
 
 ### 2.6 Apportioning of Requirements
 
-Apportion the software requirements to software elements. For requirements that will require implementation over multiple software elements, or when allocation to a software element is initially undefined, this should be so stated. A cross reference table by function and software element should be used to summarize the apportioning.
+Required elements that will be developed in the backend include: 
+- User registration
+- User authentication and authorization
+- Team creation 
+- Push notification 
 
-Identify requirements that may be delayed until future versions of the system (e.g., blocks and/or increments).
+Required elements that will be developed in the frontend include:
+- Team creation
+- User profile management
+- Trade evalutaion 
+
+Future Enhancements (In potential future versions): 
+- Waiver wire analysis (Suggest players to add based on team needs)
+- Trade suggestions (Analyze league and provide potential trade)
+- Up-to-date fantasy football news (Provide real-time updates about player injuries, trades, etc.)
 
 ## 3. Requirements
 
-> This section specifies the software product's requirements. Specify all of the software requirements to a level of detail sufficient to enable designers to design a software system to satisfy those requirements, and to enable testers to test that the software system satisfies those requirements.
+Software Requirements:
 
-> The specific requirements should:
-
-- Be uniquely identifiable.
-- State the subject of the requirement (e.g., system, software, etc.) and what shall be done.
-- Optionally state the conditions and constraints, if any.
-- Describe every input (stimulus) into the software system, every output (response) from the software system, and all functions performed by the software system in response to an input or in support of an output.
-- Be verifiable (e.g., the requirement realization can be proven to the customer's satisfaction)
-- Conform to agreed upon syntax, keywords, and terms.
+This software should give the user the best possible fantasy football team to draft based on the players position in the draft. The prorgram will base all of it's data off of the ESPN fantasy football API which consists of every single players statistics from the year prior. The algorithm will go mainly based off of each player's statistics from the year prior, such as points scored, average points, what round they were drafted in, and their roster percentage.
 
 ### 3.1 User Requirements
 
+The user will have the app on their mobile device and the application will greet the user and ask the user for the specifics of the league format, such as how many teams are in the league, point format, and draft type. We would also like to implement a feature that involves prioritizing drafting a specific position earlier (or later) in the draft. For example, if you want to draft a quarterback earlier/later than normal, there should be an option to set your preference for position and the round you want to draft them in. 
+
+
 ### 3.2 System Requirements
+
+The systems that will be required for the fantasy football are as followed. 
+Device: Iphone 8/Samsung Galaxy S8 or any device that is comparable.  
+Operating System: needs to be on iOS11/Android 7.0 "Nougat" or later
 
 <!-- TODO: come up with a description -->
 
@@ -124,6 +153,7 @@ Identify requirements that may be delayed until future versions of the system (e
 > This section provides the verification approaches and methods planned to qualify the software. The information items for verification are recommended to be given in a parallel manner with the requirement items in Section 3. The purpose of the verification process is to provide objective evidence that a system or system element fulfills its specified requirements and characteristics.
 
 <!-- TODO: give more guidance, similar to section 3 -->
+
 <!-- ieee 15288:2015 -->
 
 ## 5. Appendix
