@@ -2,8 +2,11 @@
 
 ## For Fantasy Football App
 
+
 Version 1.0
 Prepared by Tien Hoang, Anthony Micco, Nicolas Ott, Austin Winger-Kailer, and Nicolas Winsen
+`<organization>`
+`<date created>`
 `<organization>`
 `<date created>`
 
@@ -48,9 +51,11 @@ Prepared by Tien Hoang, Anthony Micco, Nicolas Ott, Austin Winger-Kailer, and Ni
 ### 1.1 Document Purpose
 
 The purpose of this document is to outline the software requirements of "Fantasy Football Insights".
+The purpose of this document is to outline the software requirements of "Fantasy Football Insights".
 
 ### 1.2 Product Scope
 
+The product being outlined is "Fantasy Football Insights", version 1.0. The product will allow for analysis of the best possible draft given draft position and trade analysis. This document will describe the whole system. The system will provide ease of access to information regarding the best avenue to your fantasy football season and help players make the best decisions for their league. The system will allow fantasy players to gain an edge over their leaguemates and allow for best possible performance.
 The product being outlined is "Fantasy Football Insights", version 1.0. The product will allow for analysis of the best possible draft given draft position and trade analysis. This document will describe the whole system. The system will provide ease of access to information regarding the best avenue to your fantasy football season and help players make the best decisions for their league. The system will allow fantasy players to gain an edge over their leaguemates and allow for best possible performance.
 
 ### 1.3 Definitions, Acronyms and Abbreviations
@@ -58,9 +63,19 @@ The product being outlined is "Fantasy Football Insights", version 1.0. The prod
 ### 1.4 References
 
 [ESPN Fantasy API](http://espn-fantasy-football-api.s3-website.us-east-2.amazonaws.com/) - Allows developers to access user, league, and player information.
+[ESPN Fantasy API](http://espn-fantasy-football-api.s3-website.us-east-2.amazonaws.com/) - Allows developers to access user, league, and player information.
 
 ### 1.5 Document Overview
 
+The rest of the document will include the product overview (Section 2), which will describe functions, perspective, constraints, user characteristics, assumptions, and dependencies.
+
+The requirements section (Section 3) will discuss external interfaces, functional requirements, quality of service, compliance, design, and implementation. It is divided into subsections that details more specific requirements for the system.
+
+The verification section will describe the methods that will be used to verify, test, and validate that the software is meeting the requirements.
+
+Lastly, the appendix provides additional information such as algorithms, sources, security measures, UI design, outside sources, and testing and quality assurance processes.
+
+The document as a whole serves as a blueprint for the "Fantasy Football Insights" app, covering purpose, scope, requirements, and quality standards. Provides structure for developers and stakeholders to understand specs and requirements.
 The rest of the document will include the product overview (Section 2), which will describe functions, perspective, constraints, user characteristics, assumptions, and dependencies.
 
 The requirements section (Section 3) will discuss external interfaces, functional requirements, quality of service, compliance, design, and implementation. It is divided into subsections that details more specific requirements for the system.
@@ -76,9 +91,17 @@ The document as a whole serves as a blueprint for the "Fantasy Football Insights
 ### 2.1 Product Perspective
 
 Fantasy Football Insights is an idea based largely on existing fantasy football apps such as ESPN Fantasy Football, Sleeper, and Yahoo! Fantasy Football, among others, along with our developers passion for football. The idea is to improve upon ideas from these existed applications to create the best possible fantasy football assistance software as well as help users win their leagues.
+Fantasy Football Insights is an idea based largely on existing fantasy football apps such as ESPN Fantasy Football, Sleeper, and Yahoo! Fantasy Football, among others, along with our developers passion for football. The idea is to improve upon ideas from these existed applications to create the best possible fantasy football assistance software as well as help users win their leagues.
 
 ### 2.2 Product Functions
 
+The Fantasy Football Insights software will perform and allow users to perform the following tasks:
+
+- Predict the best possible fantasy team based on user's draft positioning
+- Provide trade evaluations based on team needs and future production
+- View players' weekly score projections for weeks 1-18
+- Provide insight on which players users should pick up on waivers
+- Provide best possible lineups for each week based on matchups
 The Fantasy Football Insights software will perform and allow users to perform the following tasks:
 
 - Predict the best possible fantasy team based on user's draft positioning
@@ -90,7 +113,13 @@ The Fantasy Football Insights software will perform and allow users to perform t
 ### 2.3 Product Constraints
 
 While we at Fantasy Football Insights work to develop the best possible fantasy football app for our consumers, we limitations to what we can do.These constraints include:
+While we at Fantasy Football Insights work to develop the best possible fantasy football app for our consumers, we limitations to what we can do.These constraints include:
 
+- The availability of data from the NFL and our API.
+- Platform compatability (Our app works only on IOS and Android)
+- Must have a stable internet connection to use our product
+- Optimal for fantasy leagues that utilize points-per-reception (PPR) scoring
+- We only have English language capabilities at this point
 - The availability of data from the NFL and our API.
 - Platform compatability (Our app works only on IOS and Android)
 - Must have a stable internet connection to use our product
@@ -99,6 +128,7 @@ While we at Fantasy Football Insights work to develop the best possible fantasy 
 
 ### 2.4 User Characteristics
 
+Users of the Fantasy Football Insights software will largely be users that are interested in getting the upperhand in their fantasy football league. These users are serious about fantasy football and intend to win their leagues by utilizing top notch software to provide them with the best possible roster for their fantasy team.
 Users of the Fantasy Football Insights software will largely be users that are interested in getting the upperhand in their fantasy football league. These users are serious about fantasy football and intend to win their leagues by utilizing top notch software to provide them with the best possible roster for their fantasy team.
 
 ### 2.5 Assumptions and Dependencies
@@ -109,7 +139,8 @@ In developing Fantasy Football Insights, we rely on various elements to function
 - The availability of our API and proper functionality
 - Active user engagement and feedback from users
 - Depends on the type of operating system (IOS and Android)
-- Integration of fantasy app (ESPN Fantasy Football)
+- Integration of fantasy app (ESPN Fantasy Football)   
+
 
 ### 2.6 Apportioning of Requirements
 
@@ -124,21 +155,42 @@ Required elements that will be developed in the frontend include:
 
 - Team creation
 - User profile management
-- Trade evalutaion
+- Trade evalutaion 
+
+Required elements that will be developed in the backend include: 
+
+- User registration
+- User authentication and authorization
+- Team creation 
+- Push notification 
+
 
 Future Enhancements (In potential future versions):
 
 - Waiver wire analysis (Suggest players to add based on team needs)
 - Trade suggestions (Analyze league and provide potential trade)
 - Up-to-date fantasy football news (Provide real-time updates about player injuries, trades, etc.)
+Future Enhancements (In potential future versions): 
+- Waiver wire analysis (Suggest players to add based on team needs)
+- Trade suggestions (Analyze league and provide potential trade)
+- Up-to-date fantasy football news (Provide real-time updates about player injuries, trades, etc.)
 
 ## 3. Requirements
 
-> This section specifies the software product's requirements. Specify all of the software requirements to a level of detail sufficient to enable designers to design a software system to satisfy those requirements, and to enable testers to test that the software system satisfies those requirements.
+Software Requirements:
+
+This software should give the user the best possible fantasy football team to draft based on the players position in the draft. The prorgram will base all of it's data off of the ESPN fantasy football API which consists of every single players statistics from the year prior. The algorithm will go mainly based off of each player's statistics from the year prior, such as points scored, average points, what round they were drafted in, and their roster percentage.
 
 ### 3.1 User Requirements
 
+The user will have the app on their mobile device and the application will greet the user and ask the user for the specifics of the league format, such as how many teams are in the league, point format, and draft type. We would also like to implement a feature that involves prioritizing drafting a specific position earlier (or later) in the draft. For example, if you want to draft a quarterback earlier/later than normal, there should be an option to set your preference for position and the round you want to draft them in. 
+
+
 ### 3.2 System Requirements
+
+The systems that will be required for the fantasy football are as followed. 
+Device: Iphone 8/Samsung Galaxy S8 or any device that is comparable.  
+Operating System: needs to be on iOS11/Android 7.0 "Nougat" or later
 
 <!-- TODO: come up with a description -->
 
