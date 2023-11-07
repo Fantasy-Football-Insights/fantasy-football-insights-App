@@ -3,8 +3,6 @@ import {
   Button,
   ButtonText,
   FormControl,
-  Heading,
-  Image,
   Input,
   InputField,
   VStack,
@@ -24,24 +22,7 @@ export default function Register() {
           headerTintColor: "#EE0C0C",
         }}
       />
-      <Box flex={1} alignItems="center" justifyContent="space-around" m={8}>
-        <VStack space="3xl">
-          <VStack alignItems="center" space="xl">
-            <Image
-              resizeMode="contain"
-              width={150}
-              height={150}
-              source={require("../../../assets/images/logo.png")}
-              alt="image"
-            />
-            <Heading fontSize="$2xl" color="#EE0C0C" textAlign="center">
-              Fantasy Football Insights
-            </Heading>
-          </VStack>
-          <Heading fontSize="$2xl" color="#EE0C0C" textAlign="center">
-            Your home for the best fantasy football assistance
-          </Heading>
-        </VStack>
+      <Box flex={1} alignItems="center" justifyContent="center" m={8}>
         <VStack w="90%" m="$16" space="3xl">
           <FormControl>
             <Input bg="#414040" borderColor="#2F2E2E">
