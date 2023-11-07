@@ -4,6 +4,7 @@ import {
   ButtonText,
   FormControl,
   HStack,
+  Heading,
   Input,
   InputField,
   Text,
@@ -29,14 +30,15 @@ export default function Login() {
       <Box flex={1} bg="#2F2E2E">
         <Stack.Screen
           options={{
-            title: "Log In",
-            headerShadowVisible: false,
-            headerStyle: { backgroundColor: "#2F2E2E" },
-            headerTintColor: "#EE0C0C",
+            headerShown: false,
           }}
         />
         <Box flex={1} alignItems="center" justifyContent="center" m={8}>
-          <VStack w="90%" m="$16" space="3xl">
+          <VStack w="60%" m="$16" space="3xl">
+            <Box>
+              <Heading color="#EE0C0C">Welcome</Heading>
+              <Text color="#EE0C0C">Sign in to continue!</Text>
+            </Box>
             <FormControl>
               <Input
                 bg="#414040"
