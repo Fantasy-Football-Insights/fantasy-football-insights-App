@@ -14,17 +14,9 @@ import { Link, Stack } from "expo-router";
 import { useState } from "react";
 import { Keyboard, TouchableWithoutFeedback } from "react-native";
 
-import { useCallback } from "react";
-
 export default function Login() {
-  const [borderColor, setBorderColor] = useState("#414040");
-  const onInputFocus = useCallback(() => {
-    setBorderColor("#EE0C0C");
-  }, []);
-
-  const onInputBlur = useCallback(() => {
-    setBorderColor("#414040");
-  }, []);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <Box flex={1} bg="#2F2E2E">
@@ -45,11 +37,17 @@ export default function Login() {
                 borderColor="#414040"
                 sx={{
                   ":focus": {
-                    borderColor: "#EE0C0C",
+                    borderColor: "white",
                   },
                 }}
               >
-                <InputField color="white" type="text" placeholder="Email" />
+                <InputField
+                  color="white"
+                  type="text"
+                  placeholder="Email"
+                  value={email}
+                  onChangeText={setEmail}
+                />
               </Input>
             </FormControl>
             <FormControl>
@@ -58,7 +56,7 @@ export default function Login() {
                 borderColor="#414040"
                 sx={{
                   ":focus": {
-                    borderColor: "#EE0C0C",
+                    borderColor: "white",
                   },
                 }}
               >
@@ -66,6 +64,8 @@ export default function Login() {
                   color="white"
                   type="password"
                   placeholder="Password"
+                  value={password}
+                  onChangeText={setPassword}
                 />
               </Input>
             </FormControl>
