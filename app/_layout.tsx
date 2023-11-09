@@ -4,6 +4,7 @@ import { GluestackUIProvider } from "@gluestack-ui/themed";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
+import { AuthProvider } from "../components/context/AuthContext";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -44,10 +45,12 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   return (
-    <GluestackUIProvider config={config}>
-      <Stack>
-        <Stack.Screen name="index" />
-      </Stack>
-    </GluestackUIProvider>
+    <AuthProvider>
+      <GluestackUIProvider config={config}>
+        <Stack>
+          <Stack.Screen name="(home)" options={{ headerShown: false }} />
+        </Stack>
+      </GluestackUIProvider>
+    </AuthProvider>
   );
 }

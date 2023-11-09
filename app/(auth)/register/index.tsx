@@ -12,11 +12,12 @@ import {
   VStack,
 } from "@gluestack-ui/themed";
 import { useAsync } from "@react-hookz/web";
-import { Link, Stack } from "expo-router";
+import { Link, Stack, useRouter } from "expo-router";
 import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Keyboard, TouchableWithoutFeedback } from "react-native";
-import { register } from "../../api/auth";
+import { useAuth } from "../../../components/context/AuthContext";
+import { login, register } from "../../api/auth";
 
 type FormData = {
   email: string;
@@ -27,6 +28,20 @@ type FormData = {
 };
 
 export default function Register() {
+  const [sessionStatus, setSessionStatus] = useState<"not-started" | "loading">(
+    "not-started"
+  );
+
+  const router = useRouter();
+
+  // auth context
+  const { authenticated, session } = useAuth();
+
+  // if user is authenticated, go to home screen
+  if (authenticated) {
+    router.replace("/(home)/");
+  }
+
   const {
     handleSubmit,
     control,
@@ -36,8 +51,10 @@ export default function Register() {
   const [formData, setFormData] = useState<FormData>();
   const [password, setPassword] = useState("");
 
+  // wrapper for api call
   const [regiserUserRequest, registerUserActions] = useAsync(async () => {
     if (formData) {
+      // function to register user passing in the required info
       const response = await register(
         formData.email,
         formData.password,
@@ -48,6 +65,7 @@ export default function Register() {
     }
   });
 
+  // function when register button is pressed
   const onSubmit: SubmitHandler<FormData> = (data) => {
     console.log("submit");
     setFormData({
@@ -57,9 +75,38 @@ export default function Register() {
       password: data.password,
       passwordConfirm: data.passwordConfirm,
     });
-    console.log(data);
     registerUserActions.execute();
   };
+
+  // wrapper for login api call
+  const [loginRequest, loginActions] = useAsync(async () => {
+    if (formData) {
+      const response = await login(formData.email, formData.password);
+      return response;
+    }
+  });
+
+  // once the user is registered, log them in
+  if (
+    regiserUserRequest.status === "success" &&
+    loginRequest.status === "not-executed"
+  ) {
+    loginActions.execute();
+  }
+
+  // once logged in, set session
+  const onLogin = async (access_token: string) => {
+    setSessionStatus("loading");
+    session.create(access_token);
+  };
+
+  if (loginRequest.status === "success" && loginRequest.result) {
+    const { access_token } = loginRequest.result;
+    // usestate to prevent multiple calls
+    if (sessionStatus === "not-started") {
+      onLogin(access_token);
+    }
+  }
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -70,11 +117,12 @@ export default function Register() {
           }}
         />
         <Box flex={1} alignItems="center" justifyContent="center" m={8}>
-          <VStack w="60%" m="$16" space="sm">
+          <VStack w="70%" m="$16" space="sm">
             <Box>
               <Heading color="#EE0C0C">Create Account</Heading>
               <Text color="#EE0C0C">Create a new account</Text>
             </Box>
+            {/* First Name Input */}
             <FormControl isRequired isInvalid={!!errors.firstName}>
               <FormControl.Label>
                 <Heading color="lightgray" fontSize="$md">
@@ -110,6 +158,7 @@ export default function Register() {
               <FormControl.Error>
                 <Text color="red">{errors.firstName?.message}</Text>
               </FormControl.Error>
+              {/* Last Name Input */}
             </FormControl>
             <FormControl isRequired isInvalid={!!errors.lastName}>
               <FormControl.Label>
@@ -147,6 +196,7 @@ export default function Register() {
                 <Text color="red">{errors.lastName?.message}</Text>
               </FormControl.Error>
             </FormControl>
+            {/* Email Input */}
             <FormControl isRequired isInvalid={!!errors.email}>
               <FormControl.Label>
                 <Heading color="lightgray" fontSize="$md">
@@ -187,6 +237,7 @@ export default function Register() {
                 <Text color="red">{errors.email?.message}</Text>
               </FormControl.Error>
             </FormControl>
+            {/* Password Input */}
             <FormControl isRequired isInvalid={!!errors.password}>
               <FormControl.Label>
                 <Heading color="lightgray" fontSize="$md">
@@ -230,6 +281,7 @@ export default function Register() {
                 <Text color="red">{errors.password?.message}</Text>
               </FormControl.Error>
             </FormControl>
+            {/* Confirm Password Input */}
             <FormControl isRequired isInvalid={!!errors.passwordConfirm}>
               <FormControl.Label>
                 <Heading color="lightgray" fontSize="$md">
@@ -240,7 +292,7 @@ export default function Register() {
                 control={control}
                 name="passwordConfirm"
                 rules={{
-                  required: "Password is required",
+                  required: "Confirm password is required",
                   validate: (value) =>
                     value === password || "Passwords do not match",
                 }}
@@ -268,6 +320,7 @@ export default function Register() {
                 <Text color="red">{errors.passwordConfirm?.message}</Text>
               </FormControl.Error>
             </FormControl>
+            {/* Link to login page */}
             <HStack space="xs">
               <Text color="white">Already have an account?</Text>
               <Link href={"/(auth)/login/"}>
@@ -277,13 +330,15 @@ export default function Register() {
               </Link>
             </HStack>
           </VStack>
+          {/* Register Button */}
           <Button
             bgColor="#EE0C0C"
             px="$16"
             onPress={() => handleSubmit(onSubmit)()}
           >
             <ButtonText>Register</ButtonText>
-            {regiserUserRequest.status === "loading" && <ButtonSpinner />}
+            {regiserUserRequest.status === "loading" ||
+              (loginRequest.status === "loading" && <ButtonSpinner ml="$2" />)}
           </Button>
         </Box>
       </Box>
