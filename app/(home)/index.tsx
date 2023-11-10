@@ -1,17 +1,17 @@
 import { Box, Button, ButtonText, VStack } from "@gluestack-ui/themed";
 import { SafeAreaView } from "react-native";
+import { Redirect, Stack, useRouter } from "expo-router";
 import { useAuth } from "../../components/context/AuthContext";
 
 export default function Home() {
   const { session } = useAuth();
+  const router = useRouter();
 
   // end session on logout
   const logout = () => {
     session.end();
   };
 
-  const settings = () => {
-  };
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#2F2E2E" }}>
@@ -20,10 +20,11 @@ export default function Home() {
           <Button bg="#EE0C0C" onPress={logout}>
             <ButtonText>Log Out</ButtonText>
           </Button>
-          <Button onPress={settings}>
+          <Button bg="#EE0C0C" onPress={() => router.push("/(settings)/")}>
             <ButtonText>Settings</ButtonText>
           </Button>
         </VStack>
+
       </Box>
     </SafeAreaView >
   );
