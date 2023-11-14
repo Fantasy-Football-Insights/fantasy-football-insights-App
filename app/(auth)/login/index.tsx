@@ -12,8 +12,8 @@ import {
   VStack,
 } from "@gluestack-ui/themed";
 import { useAsync } from "@react-hookz/web";
-import { Link, Stack, useRouter } from "expo-router";
-import { useState } from "react";
+import { Link, Stack, router } from "expo-router";
+import { useEffect, useState } from "react";
 import { Keyboard, TouchableWithoutFeedback } from "react-native";
 import { useAuth } from "../../../components/context/AuthContext";
 import { login } from "../../api/auth";
@@ -24,8 +24,6 @@ export default function Login() {
   const [sessionStatus, setSessionStatus] = useState<"not-started" | "loading">(
     "not-started"
   );
-
-  const router = useRouter();
 
   // auth context
   const { authenticated, session } = useAuth();
@@ -52,9 +50,11 @@ export default function Login() {
   }
 
   // if user is authenticated, go to the home screen
-  if (authenticated) {
-    router.replace("/(home)/");
-  }
+  useEffect(() => {
+    if (authenticated) {
+      router.replace("/");
+    }
+  });
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>

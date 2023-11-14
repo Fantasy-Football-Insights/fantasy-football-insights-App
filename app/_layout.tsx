@@ -2,7 +2,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { config } from "@gluestack-ui/config"; // Opti
 import { GluestackUIProvider } from "@gluestack-ui/themed";
 import { useFonts } from "expo-font";
-import { SplashScreen, Stack } from "expo-router";
+import { Slot, SplashScreen } from "expo-router";
 import { useEffect } from "react";
 import { AuthProvider } from "../components/context/AuthContext";
 
@@ -13,7 +13,7 @@ export {
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: "index",
+  initialRouteName: "/(app)/index",
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -47,9 +47,7 @@ function RootLayoutNav() {
   return (
     <AuthProvider>
       <GluestackUIProvider config={config}>
-        <Stack>
-          <Stack.Screen name="(home)" options={{ headerShown: false }} />
-        </Stack>
+        <Slot />
       </GluestackUIProvider>
     </AuthProvider>
   );

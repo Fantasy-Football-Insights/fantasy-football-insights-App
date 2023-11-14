@@ -6,20 +6,18 @@ import {
   Image,
   VStack,
 } from "@gluestack-ui/themed";
-import { Redirect, Stack, useRouter } from "expo-router";
+import { Redirect, Stack, router } from "expo-router";
 import { SafeAreaView } from "react-native";
 import { useAuth } from "../components/context/AuthContext";
 
 // This component is app entry point
 export default function App() {
-  const router = useRouter();
-
   // auth
   const { authenticated } = useAuth();
 
   // if authenticated, go to home screen
   if (authenticated) {
-    return <Redirect href="/(home)/" />;
+    return <Redirect href="/" />;
   }
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#2F2E2E" }}>
