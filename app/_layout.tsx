@@ -49,6 +49,7 @@ function RootLayoutNav() {
       <GluestackUIProvider config={config}>
         <Stack>
           <Stack.Screen name="(home)" options={{ headerShown: false }} />
+          <Stack.Screen name="(settings)" options={{ headerShown: false }} />
         </Stack>
       </GluestackUIProvider>
     </AuthProvider>
