@@ -12,9 +12,9 @@ import {
   ModalBody,
   ModalCloseButton
 } from "@gluestack-ui/themed";
-import { SafeAreaView, TextComponent } from "react-native";
+import { SafeAreaView } from "react-native";
 import { useState } from "react";
-import { Redirect, Stack, useRouter } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 import { useAuth } from "../../../components/context/AuthContext";
 
 export default function Settings() {
@@ -34,6 +34,21 @@ export default function Settings() {
   return (
 
     <SafeAreaView style={{ flex: 1, backgroundColor: "#2F2E2E" }}>
+      <Stack.Screen
+        options={{
+          title: "Settings",
+          headerStyle: {
+            backgroundColor: "#2F2E2E",
+          },
+
+          headerTintColor: "#EE0C0C",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+          headerTitleAlign: "center",
+        }}
+      />
+
       <Box flex={1} alignItems="center" justifyContent="space-around" m={4}>
         <VStack space="3xl">
           <Button bg="#EE0C0C" onPress={logout}>
