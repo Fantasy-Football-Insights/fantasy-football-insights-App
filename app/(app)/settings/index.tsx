@@ -10,9 +10,10 @@ import {
   ModalHeader,
   Heading,
   ModalBody,
-  ModalCloseButton
+  Icon,
+  AlertCircleIcon
 } from "@gluestack-ui/themed";
-import { SafeAreaView } from "react-native";
+import { ActionSheetIOS, StyleSheet, View, Platform, SafeAreaView } from "react-native";
 import { useState } from "react";
 import { Stack, useRouter } from "expo-router";
 import { useAuth } from "../../../components/context/AuthContext";
@@ -29,6 +30,25 @@ export default function Settings() {
 
   const deleteAccount = () => {
 
+  }
+
+  const determinePlatform = () => {
+    if (Platform.OS === "ios") {
+      ActionSheetIOS.showActionSheetWithOptions(
+        {
+          options: ["Cancel", "Delete"],
+          destructiveButtonIndex: 1,
+          cancelButtonIndex: 0,
+          userInterfaceStyle: "dark",
+        },
+        buttonIndex => {
+          if (buttonIndex === 1) {
+            deleteAccount();
+          }
+        })
+    } else {
+      setShowModal(true)
+    }
   }
 
   return (
@@ -54,7 +74,7 @@ export default function Settings() {
           <Button bg="#EE0C0C" onPress={logout}>
             <ButtonText>Log Out</ButtonText>
           </Button>
-          <Button bg="#EE0C0C" onPress={() => { setShowModal(true) }}>
+          <Button bg="#EE0C0C" onPress={() => { determinePlatform }}>
             <ButtonText>Delete Account</ButtonText>
           </Button>
         </VStack>
@@ -63,20 +83,25 @@ export default function Settings() {
           onClose={() => { setShowModal(false) }
           }>
           <ModalBackdrop />
-          <ModalContent alignItems="center" >
+          <ModalContent alignItems="center">
             <ModalHeader borderBottomWidth={"$0"}>
-              <VStack space="sm"  >
+              <VStack space="xs"  >
+                <Icon as={AlertCircleIcon} m="$10" w="$20" h="$20" />
                 <Heading size="lg" textAlign="center">Are you sure?</Heading>
                 <Text size="sm">This cannot be reversed. </Text>
               </VStack>
             </ModalHeader>
             <ModalBody>
-              <Button bg="#EE0C0C" onPress={deleteAccount}>
-                <ButtonText>Delete</ButtonText>
-              </Button>
-              <Button bg="$coolGray500" onPress={() => { setShowModal(false) }}>
-                <ButtonText>Cancel</ButtonText>
-              </Button>
+              <Box flex={1} alignItems="center" justifyContent="space-around" m={4}>
+                <VStack space="lg"  >
+                  <Button bg="#EE0C0C" onPress={deleteAccount}>
+                    <ButtonText>Delete</ButtonText>
+                  </Button>
+                  <Button bg="$coolGray500" onPress={() => { setShowModal(false) }}>
+                    <ButtonText>Cancel</ButtonText>
+                  </Button>
+                </VStack>
+              </Box>
             </ModalBody>
           </ModalContent>
         </Modal >
