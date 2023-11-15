@@ -58,6 +58,8 @@ export default function Settings() {
     if (Platform.OS === "ios") {
       ActionSheetIOS.showActionSheetWithOptions(
         {
+          title: "Are you sure?",
+          message: "This cannot be reversed",
           options: ["Cancel", "Delete"],
           destructiveButtonIndex: 1,
           cancelButtonIndex: 0,
@@ -65,7 +67,7 @@ export default function Settings() {
         },
         buttonIndex => {
           if (buttonIndex === 1) {
-            deleteActions.execute();
+            deleteAccount();
           }
         })
     } else {
