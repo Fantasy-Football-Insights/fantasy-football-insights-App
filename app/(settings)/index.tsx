@@ -1,34 +1,35 @@
-import { Box, Text, Button, ButtonText, VStack, Modal, ModalBackdrop, ModalContent, ModalHeader, Heading, ModalBody } from "@gluestack-ui/themed";
-import { SafeAreaView } from "react-native";
+import {
+    Box,
+    Text,
+    Button,
+    ButtonText,
+    VStack,
+    Modal,
+    ModalBackdrop,
+    ModalContent,
+    ModalHeader,
+    Heading,
+    ModalBody,
+    ModalCloseButton
+} from "@gluestack-ui/themed";
+import { SafeAreaView, TextComponent } from "react-native";
 import { useState } from "react";
 import { Redirect, Stack, useRouter } from "expo-router";
 import { useAuth } from "../../components/context/AuthContext";
-import { UserModel } from "../api/users";
-import { API_URL } from "../../config/baseurl";
-import axios from "axios";
 
 export default function Settings() {
-
     const { session } = useAuth();
     const router = useRouter();
     const [showModal, setShowModal] = useState(false);
 
-    //Logs user out and ends session
     const logout = () => {
         session.end();
         router.push("/(auth)/login/");
     }
 
-    //Deletes the users account and ends session
-    const deleteUser = async () => {
-        const result = await axios.delete<UserModel>(`${API_URL}/users/delete`);
-        session.end();
-        router.push("/(auth)/login/");
-        return result.data;
-    };
+    const deleteAccount = () => {
 
-
-
+    }
 
     return (
 
@@ -42,7 +43,6 @@ export default function Settings() {
                         <ButtonText>Delete Account</ButtonText>
                     </Button>
                 </VStack>
-
                 < Modal
                     isOpen={showModal}
                     onClose={() => { setShowModal(false) }
@@ -56,7 +56,7 @@ export default function Settings() {
                             </VStack>
                         </ModalHeader>
                         <ModalBody>
-                            <Button bg="#EE0C0C" onPress={deleteUser}>
+                            <Button bg="#EE0C0C" onPress={deleteAccount}>
                                 <ButtonText>Delete</ButtonText>
                             </Button>
                             <Button bg="$coolGray500" onPress={() => { setShowModal(false) }}>

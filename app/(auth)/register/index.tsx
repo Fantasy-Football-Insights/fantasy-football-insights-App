@@ -12,8 +12,8 @@ import {
   VStack,
 } from "@gluestack-ui/themed";
 import { useAsync } from "@react-hookz/web";
-import { Link, Stack, useRouter } from "expo-router";
-import { useState } from "react";
+import { Link, Stack, router } from "expo-router";
+import { useEffect, useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { Keyboard, TouchableWithoutFeedback } from "react-native";
 import { useAuth } from "../../../components/context/AuthContext";
@@ -32,15 +32,15 @@ export default function Register() {
     "not-started"
   );
 
-  const router = useRouter();
-
   // auth context
   const { authenticated, session } = useAuth();
 
   // if user is authenticated, go to home screen
-  if (authenticated) {
-    router.replace("/(home)/");
-  }
+  useEffect(() => {
+    if (authenticated) {
+      router.replace("/");
+    }
+  });
 
   const {
     handleSubmit,
