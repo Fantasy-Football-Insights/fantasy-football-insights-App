@@ -47,9 +47,7 @@ function RootLayoutNav() {
   return (
     <AuthProvider>
       <GluestackUIProvider config={config}>
-        <Stack>
-          <Stack.Screen name="(home)" options={{ headerShown: false }} />
-        </Stack>
+        <Slot />
       </GluestackUIProvider>
     </AuthProvider>
   );
