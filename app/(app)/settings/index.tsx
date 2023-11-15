@@ -17,21 +17,43 @@ import { ActionSheetIOS, StyleSheet, View, Platform, SafeAreaView } from "react-
 import { useState } from "react";
 import { Stack, useRouter } from "expo-router";
 import { useAuth } from "../../../components/context/AuthContext";
+import { API_URL } from "../../../config/baseurl";
+import axios from "axios";
+import { useAsync } from "@react-hookz/web";
 
 export default function Settings() {
   const { session } = useAuth();
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
 
+  //Allows the user to logout and return to login
   const logout = () => {
     session.end();
     router.push("/(auth)/login/");
   }
 
+  //User deletion process
+  const deleteUser = async () => {
+    const result = await axios.delete(`${API_URL}/users`);
+    return result.data;
+  };
+
+  const [deleteRequest, deleteActions] = useAsync(async () => {
+    const response = await deleteUser();
+    return response;
+  }
+  )
+
   const deleteAccount = () => {
+    deleteActions.execute();
+    if (deleteRequest.status === "success") {
+      logout()
+    }
 
   }
 
+  /*Determines which OS the user is using
+    and ensures the correct popup appears*/
   const determinePlatform = () => {
     if (Platform.OS === "ios") {
       ActionSheetIOS.showActionSheetWithOptions(
@@ -43,7 +65,7 @@ export default function Settings() {
         },
         buttonIndex => {
           if (buttonIndex === 1) {
-            deleteAccount();
+            deleteActions.execute();
           }
         })
     } else {
@@ -52,7 +74,6 @@ export default function Settings() {
   }
 
   return (
-
     <SafeAreaView style={{ flex: 1, backgroundColor: "#2F2E2E" }}>
       <Stack.Screen
         options={{
@@ -69,15 +90,18 @@ export default function Settings() {
         }}
       />
 
+      {/*Creates buttons for settings screen*/}
       <Box flex={1} alignItems="center" justifyContent="space-around" m={4}>
         <VStack space="3xl">
           <Button bg="#EE0C0C" onPress={logout}>
             <ButtonText>Log Out</ButtonText>
           </Button>
-          <Button bg="#EE0C0C" onPress={() => { determinePlatform }}>
+          <Button bg="#EE0C0C" onPress={determinePlatform}>
             <ButtonText>Delete Account</ButtonText>
           </Button>
         </VStack>
+
+        {/*Creates modal for Android*/}
         < Modal
           isOpen={showModal}
           onClose={() => { setShowModal(false) }
@@ -92,16 +116,14 @@ export default function Settings() {
               </VStack>
             </ModalHeader>
             <ModalBody>
-              <Box flex={1} alignItems="center" justifyContent="space-around" m={4}>
-                <VStack space="lg"  >
-                  <Button bg="#EE0C0C" onPress={deleteAccount}>
-                    <ButtonText>Delete</ButtonText>
-                  </Button>
-                  <Button bg="$coolGray500" onPress={() => { setShowModal(false) }}>
-                    <ButtonText>Cancel</ButtonText>
-                  </Button>
-                </VStack>
-              </Box>
+              <VStack space="lg"  >
+                <Button bg="#EE0C0C" onPress={deleteAccount}>
+                  <ButtonText>Delete</ButtonText>
+                </Button>
+                <Button bg="$coolGray500" onPress={() => { setShowModal(false) }}>
+                  <ButtonText>Cancel</ButtonText>
+                </Button>
+              </VStack>
             </ModalBody>
           </ModalContent>
         </Modal >
