@@ -13,7 +13,7 @@ import {
   Icon,
   AlertCircleIcon
 } from "@gluestack-ui/themed";
-import { ActionSheetIOS, StyleSheet, View, Platform, SafeAreaView } from "react-native";
+import { ActionSheetIOS, Platform, SafeAreaView } from "react-native";
 import { useState } from "react";
 import { Stack, useRouter } from "expo-router";
 import { useAuth } from "../../../components/context/AuthContext";
@@ -98,7 +98,7 @@ export default function Settings() {
           <Button bg="#EE0C0C" onPress={logout}>
             <ButtonText>Log Out</ButtonText>
           </Button>
-          <Button bg="#EE0C0C" onPress={() => { determinePlatform(); deleteUser(); }}>
+          <Button bg="#EE0C0C" onPress={determinePlatform}>
             <ButtonText>Delete Account</ButtonText>
           </Button>
         </VStack>
