@@ -45,8 +45,41 @@ export default function App() {
           headerTitleAlign: "center",
         }} />
 
-      <Box alignItems="center" justifyContent="space-around" m={4} backgroundColor="white">
+      <Box alignItems="center" justifyContent="space-around" m={4} backgroundColor="#2f2e2e">
 
+        <Menu
+          placement="top"
+          trigger={({ ...triggerProps }) => {
+            return (
+              <Button {...triggerProps} backgroundColor="#999999" width={"80%"}>
+                <ButtonText>Select League</ButtonText>
+              </Button>
+            )
+          }}
+        >
+          <MenuItem key="Community" textValue="Community">
+            <MenuItemLabel size="sm">League</MenuItemLabel>
+          </MenuItem>
+          <MenuItem key="Plugins" textValue="Plugins">
+            {/* PuzzleIcon is imported from 'lucide-react-native' */}
+            <MenuItemLabel size="sm">League 2</MenuItemLabel>
+          </MenuItem>
+          <MenuItem key="CurrSelect" textValue="CurrSelect" disabled>
+            {/* PaintBucket is imported from 'lucide-react-native' */}
+            <MenuItemLabel size="sm" disabled>(Currently Selected) League 3</MenuItemLabel>
+          </MenuItem>
+          <MenuItem key="Add team" textValue="Add team">
+            <Icon as={AddIcon} size="sm" mr="$2" />
+            <MenuItemLabel size="sm">Add team</MenuItemLabel>
+          </MenuItem>
+        </Menu>
+        <Button backgroundColor="#999999">
+          <ButtonText>Trade</ButtonText>
+        </Button>
+
+        <Button backgroundColor="#999999">
+          <ButtonText>Draft</ButtonText>
+        </Button>
       </Box>
     </SafeAreaView >
   );
