@@ -37,7 +37,7 @@ export default function App() {
           headerStyle: {
             backgroundColor: "#D9D9D9",
           },
-          headerRight: () => (<Button variant="link" onPress={() => router.push("/(app)/settings")}><Icon as={SettingsIcon} size="xl" /></Button>),
+          headerLeft: () => <Button><Icon as={SettingsIcon} size="xl"></Icon></Button>,
           headerTintColor: "#EE0C0C",
           headerTitleStyle: {
             fontWeight: "bold",
@@ -62,7 +62,15 @@ export default function App() {
                 </SelectDragIndicatorWrapper>
               </SelectContent>
             </SelectPortal>
+
           </Select>
+
+          <Button bg="#EE0C0C" onPress={logout}>
+            <ButtonText>Log Out</ButtonText>
+          </Button>
+          <Button bg="#EE0C0C" onPress={() => router.push("/(app)/settings")}>
+            <ButtonText>Settings</ButtonText>
+          </Button>
         </VStack>
       </Box>
     </SafeAreaView >
