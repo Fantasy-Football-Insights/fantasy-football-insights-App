@@ -4,6 +4,7 @@ import {
   Button,
   ButtonText,
   VStack,
+  HStack,
   Modal,
   ModalBackdrop,
   ModalContent,
@@ -118,14 +119,14 @@ export default function Settings() {
               </VStack>
             </ModalHeader>
             <ModalBody>
-              <VStack space="lg"  >
+              <HStack space="lg"  >
                 <Button bg="#EE0C0C" onPress={deleteAccount}>
                   <ButtonText>Delete</ButtonText>
                 </Button>
                 <Button bg="$coolGray500" onPress={() => { setShowModal(false) }}>
                   <ButtonText>Cancel</ButtonText>
                 </Button>
-              </VStack>
+              </HStack>
             </ModalBody>
           </ModalContent>
         </Modal >

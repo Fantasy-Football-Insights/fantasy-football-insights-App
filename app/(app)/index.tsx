@@ -1,4 +1,22 @@
-import { Box, Button, ButtonText, VStack } from "@gluestack-ui/themed";
+import {
+  Box,
+  Button,
+  ButtonText,
+  VStack,
+  Select,
+  SelectTrigger,
+  SelectInput,
+  SelectIcon,
+  ChevronDownIcon,
+  Icon,
+  SelectPortal,
+  SelectBackdrop,
+  SelectContent,
+  SelectDragIndicator,
+  SelectDragIndicatorWrapper,
+  HStack,
+  SettingsIcon
+} from "@gluestack-ui/themed";
 import { Stack, useRouter } from "expo-router";
 import { SafeAreaView } from "react-native";
 import { useAuth } from "../../components/context/AuthContext";
@@ -17,26 +35,36 @@ export default function App() {
         options={{
           title: "Home",
           headerStyle: {
-            backgroundColor: "#2F2E2E",
+            backgroundColor: "#D9D9D9",
           },
-
+          headerRight: () => (<Button variant="link" onPress={() => router.push("/(app)/settings")}><Icon as={SettingsIcon} size="xl" /></Button>),
           headerTintColor: "#EE0C0C",
           headerTitleStyle: {
             fontWeight: "bold",
           },
           headerTitleAlign: "center",
-        }}
-      />
-      <Box flex={1} alignItems="center" justifyContent="space-around" m={4}>
-        <VStack space="3xl">
-          <Button bg="#EE0C0C" onPress={logout}>
-            <ButtonText>Log Out</ButtonText>
-          </Button>
-          <Button bg="#EE0C0C" onPress={() => router.push("/(app)/settings")}>
-            <ButtonText>Settings</ButtonText>
-          </Button>
+        }} />
+
+      <Box alignItems="center" justifyContent="space-around" m={4} backgroundColor="white">
+        <VStack >
+          <Select>
+            <SelectTrigger variant="outline" size="xl">
+              <SelectInput placeholder="Select Team" />
+              <SelectIcon mr="$3">
+                <Icon as={ChevronDownIcon} />
+              </SelectIcon>
+            </SelectTrigger>
+            <SelectPortal>
+              <SelectBackdrop />
+              <SelectContent>
+                <SelectDragIndicatorWrapper>
+                  <SelectDragIndicator />
+                </SelectDragIndicatorWrapper>
+              </SelectContent>
+            </SelectPortal>
+          </Select>
         </VStack>
       </Box>
-    </SafeAreaView>
+    </SafeAreaView >
   );
 }
