@@ -34,9 +34,10 @@ export default function App() {
         options={{
           title: "Home",
           headerStyle: {
-            backgroundColor: "#D9D9D9",
+            backgroundColor: "#444444",
+            //dropshadow?
           },
-          headerRight: () => (<Button variant="link" onPress={() => router.push("/(app)/settings")}><Icon as={SettingsIcon} size="xl" /></Button>),
+          headerRight: () => (<Button variant="link" onPress={() => router.push("/(app)/settings")}><Icon as={SettingsIcon} size="xl" color="#EE0c0c" /></Button>),
           headerTintColor: "#EE0C0C",
           headerTitleStyle: {
             fontWeight: "bold",
