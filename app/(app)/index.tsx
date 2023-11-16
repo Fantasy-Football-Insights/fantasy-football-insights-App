@@ -46,24 +46,7 @@ export default function App() {
         }} />
 
       <Box alignItems="center" justifyContent="space-around" m={4} backgroundColor="white">
-        <VStack >
-          <Select>
-            <SelectTrigger variant="outline" size="xl">
-              <SelectInput placeholder="Select Team" />
-              <SelectIcon mr="$3">
-                <Icon as={ChevronDownIcon} />
-              </SelectIcon>
-            </SelectTrigger>
-            <SelectPortal>
-              <SelectBackdrop />
-              <SelectContent>
-                <SelectDragIndicatorWrapper>
-                  <SelectDragIndicator />
-                </SelectDragIndicatorWrapper>
-              </SelectContent>
-            </SelectPortal>
-          </Select>
-        </VStack>
+
       </Box>
     </SafeAreaView >
   );
