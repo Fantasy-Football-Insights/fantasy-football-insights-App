@@ -9,11 +9,10 @@ import {
   SelectIcon,
   ChevronDownIcon,
   Icon,
-  SelectPortal,
-  SelectBackdrop,
-  SelectContent,
-  SelectDragIndicator,
-  SelectDragIndicatorWrapper,
+  Menu,
+  MenuItem,
+  MenuItemLabel,
+  AddIcon,
   HStack,
   SettingsIcon
 } from "@gluestack-ui/themed";
@@ -35,9 +34,10 @@ export default function App() {
         options={{
           title: "Home",
           headerStyle: {
-            backgroundColor: "#D9D9D9",
+            backgroundColor: "#444444",
+            //dropshadow?
           },
-          headerLeft: () => <Button><Icon as={SettingsIcon} size="xl"></Icon></Button>,
+          headerLeft: () => <Button variant="link" onPress={() => router.push("/(app)/settings")}><Icon as={SettingsIcon} size="xl" color="#EE0c0c"></Icon></Button>,
           headerTintColor: "#EE0C0C",
           headerTitleStyle: {
             fontWeight: "bold",
@@ -62,15 +62,7 @@ export default function App() {
                 </SelectDragIndicatorWrapper>
               </SelectContent>
             </SelectPortal>
-
           </Select>
-
-          <Button bg="#EE0C0C" onPress={logout}>
-            <ButtonText>Log Out</ButtonText>
-          </Button>
-          <Button bg="#EE0C0C" onPress={() => router.push("/(app)/settings")}>
-            <ButtonText>Settings</ButtonText>
-          </Button>
         </VStack>
       </Box>
     </SafeAreaView >
