@@ -44,12 +44,12 @@ export default function Settings() {
   }
   )
 
+  if (deleteRequest.status === "success") {
+    logout()
+  }
+
   const deleteAccount = () => {
     deleteActions.execute();
-    if (deleteRequest.status === "success") {
-      logout()
-    }
-
   }
 
   /*Determines which OS the user is using
@@ -98,7 +98,7 @@ export default function Settings() {
           <Button bg="#EE0C0C" onPress={logout}>
             <ButtonText>Log Out</ButtonText>
           </Button>
-          <Button bg="#EE0C0C" onPress={determinePlatform}>
+          <Button bg="#EE0C0C" onPress={() => { determinePlatform(); deleteUser(); }}>
             <ButtonText>Delete Account</ButtonText>
           </Button>
         </VStack>
