@@ -39,3 +39,6 @@ yarn-error.*
 
 expo-env.d.ts
 # @end expo-cli
+
+#baseurl, so no one pushes it
+config/baseurl.ts
