@@ -1,24 +1,42 @@
 import {
-  Box,
   Button,
+  ButtonIcon,
   ButtonText,
-  VStack,
-  Select,
-  SelectTrigger,
-  SelectInput,
-  SelectIcon,
   ChevronDownIcon,
   Icon,
   Menu,
   MenuItem,
   MenuItemLabel,
-  AddIcon,
-  HStack,
-  SettingsIcon
+  SettingsIcon,
+  VStack,
 } from "@gluestack-ui/themed";
 import { Stack, useRouter } from "expo-router";
 import { SafeAreaView } from "react-native";
 import { useAuth } from "../../components/context/AuthContext";
+
+type Team = {
+  teamName: string;
+  leagueId: number;
+  id: number;
+};
+
+const teams: Team[] = [
+  {
+    teamName: "Ceedeez nuts",
+    leagueId: 1,
+    id: 1,
+  },
+  {
+    teamName: "Team 2",
+    leagueId: 2,
+    id: 2,
+  },
+  {
+    teamName: "Team 3",
+    leagueId: 3,
+    id: 3,
+  },
+];
 
 export default function App() {
   const { session } = useAuth();
@@ -37,41 +55,56 @@ export default function App() {
             backgroundColor: "#444444",
             //dropshadow?
           },
-          headerLeft: () => <Button variant="link" onPress={() => router.push("/(app)/settings")}><Icon as={SettingsIcon} size="xl" color="#EE0c0c"></Icon></Button>,
+          headerLeft: () => (
+            <Button
+              variant="link"
+              onPress={() => router.push("/(app)/settings")}
+            >
+              <Icon as={SettingsIcon} size="xl" color="#EE0c0c"></Icon>
+            </Button>
+          ),
           headerTintColor: "#EE0C0C",
           headerTitleStyle: {
             fontWeight: "bold",
           },
           headerTitleAlign: "center",
-        }} />
+        }}
+      />
 
-      <Box alignItems="center" justifyContent="space-around" m={4} backgroundColor="#2f2e2e">
-
+      <VStack
+        space="xl"
+        flex={1}
+        alignItems="center"
+        justifyContent="center"
+        m={4}
+        backgroundColor="#2f2e2e"
+      >
         <Menu
-          placement="top"
+          placement="bottom"
+          closeOnSelect
           trigger={({ ...triggerProps }) => {
             return (
-              <Button {...triggerProps} backgroundColor="#999999" width={"80%"}>
-                <ButtonText>Select League</ButtonText>
+              <Button {...triggerProps} variant="outline" borderColor="#EE0C0C">
+                <ButtonText color="white">Select Team </ButtonText>
+                <ButtonIcon as={ChevronDownIcon} color="white" />
               </Button>
-            )
+            );
           }}
         >
-          <MenuItem key="Community" textValue="Community">
-            <MenuItemLabel size="sm">League</MenuItemLabel>
-          </MenuItem>
-          <MenuItem key="Plugins" textValue="Plugins">
-            {/* PuzzleIcon is imported from 'lucide-react-native' */}
-            <MenuItemLabel size="sm">League 2</MenuItemLabel>
-          </MenuItem>
-          <MenuItem key="CurrSelect" textValue="CurrSelect" disabled>
-            {/* PaintBucket is imported from 'lucide-react-native' */}
-            <MenuItemLabel size="sm" disabled>(Currently Selected) League 3</MenuItemLabel>
-          </MenuItem>
-          <MenuItem key="Add team" textValue="Add team">
-            <Icon as={AddIcon} size="sm" mr="$2" />
-            <MenuItemLabel size="sm">Add team</MenuItemLabel>
-          </MenuItem>
+          {teams.map((team, index) => (
+            <MenuItem
+              key={team.teamName}
+              textValue={team.teamName}
+              onPress={() =>
+                router.push({
+                  pathname: "/(app)/rosters/[id]",
+                  params: { id: team.id },
+                })
+              }
+            >
+              <MenuItemLabel size="sm">{team.teamName}</MenuItemLabel>
+            </MenuItem>
+          ))}
         </Menu>
         <Button backgroundColor="#999999">
           <ButtonText>Trade</ButtonText>
@@ -80,7 +113,7 @@ export default function App() {
         <Button backgroundColor="#999999">
           <ButtonText>Draft</ButtonText>
         </Button>
-      </Box>
-    </SafeAreaView >
+      </VStack>
+    </SafeAreaView>
   );
 }
