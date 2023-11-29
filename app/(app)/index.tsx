@@ -3,6 +3,7 @@ import {
   ButtonIcon,
   ButtonText,
   ChevronDownIcon,
+  HStack,
   Icon,
   Menu,
   MenuItem,
@@ -41,10 +42,6 @@ const teams: Team[] = [
 export default function App() {
   const { session } = useAuth();
   const router = useRouter();
-  // end session on logout
-  const logout = () => {
-    session.end();
-  };
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#2F2E2E" }}>
@@ -106,13 +103,18 @@ export default function App() {
             </MenuItem>
           ))}
         </Menu>
-        <Button backgroundColor="#999999">
-          <ButtonText>Trade</ButtonText>
+        <Button size="xl" backgroundColor="#999999">
+          <ButtonText>Add Team</ButtonText>
         </Button>
-
-        <Button backgroundColor="#999999">
-          <ButtonText>Draft</ButtonText>
-        </Button>
+        <HStack space="lg">
+          <Button backgroundColor="#999999"
+            onPress={() => router.push("/(app)/trades/")}>
+            <ButtonText>Trade</ButtonText>
+          </Button>
+          <Button backgroundColor="#999999">
+            <ButtonText>Draft</ButtonText>
+          </Button>
+        </HStack>
       </VStack>
     </SafeAreaView>
   );

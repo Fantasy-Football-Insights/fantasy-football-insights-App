@@ -14,7 +14,7 @@ import {
   Icon,
   AlertCircleIcon
 } from "@gluestack-ui/themed";
-import { ActionSheetIOS, Platform, SafeAreaView } from "react-native";
+import { ActionSheetIOS, Platform, SafeAreaView, Image, StyleSheet } from "react-native";
 import { useState } from "react";
 import { Stack, useRouter } from "expo-router";
 import { useAuth } from "../../../components/context/AuthContext";
@@ -26,6 +26,13 @@ export default function Settings() {
   const { session } = useAuth();
   const router = useRouter();
   const [showModal, setShowModal] = useState(false);
+
+  var styles = StyleSheet.create({
+    image: {
+      width: 500,
+      height: 400
+    }
+  })
 
   //Allows the user to logout and return to login
   const logout = () => {
@@ -103,6 +110,9 @@ export default function Settings() {
             <ButtonText>Delete Account</ButtonText>
           </Button>
         </VStack>
+        <Image
+          style={styles.image}
+          source={require("../../(settings)/jett.png")} />
 
         {/*Creates modal for Android*/}
         < Modal
