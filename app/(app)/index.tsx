@@ -1,47 +1,44 @@
 import {
   Button,
-  ButtonIcon,
   ButtonText,
   ChevronDownIcon,
   HStack,
   Icon,
-  Menu,
-  MenuItem,
-  MenuItemLabel,
+  SearchIcon,
   SettingsIcon,
   VStack,
 } from "@gluestack-ui/themed";
 import { Stack, useRouter } from "expo-router";
+import { useState } from "react";
 import { SafeAreaView } from "react-native";
+import { SelectList } from "react-native-dropdown-select-list";
 import { useAuth } from "../../components/context/AuthContext";
 
 type Team = {
-  teamName: string;
-  leagueId: number;
-  id: number;
+  value: string;
+  key: number;
 };
 
 const teams: Team[] = [
   {
-    teamName: "Ceedeez nuts",
-    leagueId: 1,
-    id: 1,
+    key: 1,
+    value: "Ceedeez nuts",
   },
   {
-    teamName: "Team 2",
-    leagueId: 2,
-    id: 2,
+    value: "Team 2",
+    key: 2,
   },
   {
-    teamName: "Team 3",
-    leagueId: 3,
-    id: 3,
+    value: "Team 3",
+    key: 3,
   },
 ];
 
 export default function App() {
   const { session } = useAuth();
   const router = useRouter();
+
+  const [selected, setSelected] = useState("");
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#2F2E2E" }}>
@@ -76,39 +73,32 @@ export default function App() {
         m={4}
         backgroundColor="#2f2e2e"
       >
-        <Menu
-          placement="bottom"
-          closeOnSelect
-          trigger={({ ...triggerProps }) => {
-            return (
-              <Button {...triggerProps} variant="outline" borderColor="#EE0C0C">
-                <ButtonText color="white">Select Team </ButtonText>
-                <ButtonIcon as={ChevronDownIcon} color="white" />
-              </Button>
-            );
+        <SelectList
+          onSelect={() => router.push(`/(app)/rosters/${selected}`)}
+          setSelected={setSelected}
+          data={teams}
+          maxHeight={150}
+          arrowicon={<ChevronDownIcon size={"sm"} color={"white"} />}
+          searchicon={<SearchIcon size={"sm"} color={"white"} />}
+          search={false}
+          boxStyles={{
+            borderColor: "#EE0C0C",
+            alignItems: "center",
+            justifyContent: "space-between",
           }}
-        >
-          {teams.map((team, index) => (
-            <MenuItem
-              key={team.teamName}
-              textValue={team.teamName}
-              onPress={() =>
-                router.push({
-                  pathname: "/(app)/rosters/[id]",
-                  params: { id: team.id },
-                })
-              }
-            >
-              <MenuItemLabel size="sm">{team.teamName}</MenuItemLabel>
-            </MenuItem>
-          ))}
-        </Menu>
+          dropdownStyles={{ borderColor: "#EE0C0C" }}
+          dropdownTextStyles={{ color: "white" }}
+          inputStyles={{ color: "white" }}
+          placeholder="Select Team"
+        />
         <Button size="xl" backgroundColor="#999999">
           <ButtonText>Add Team</ButtonText>
         </Button>
         <HStack space="lg">
-          <Button backgroundColor="#999999"
-            onPress={() => router.push("/(app)/trades/")}>
+          <Button
+            backgroundColor="#999999"
+            onPress={() => router.push("/(app)/trades/")}
+          >
             <ButtonText>Trade</ButtonText>
           </Button>
           <Button backgroundColor="#999999">
