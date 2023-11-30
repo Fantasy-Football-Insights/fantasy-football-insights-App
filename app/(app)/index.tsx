@@ -1,5 +1,6 @@
 import {
   Button,
+  Box,
   ButtonText,
   ChevronDownIcon,
   HStack,
@@ -7,6 +8,8 @@ import {
   SearchIcon,
   SettingsIcon,
   VStack,
+  Heading,
+  MenuIcon
 } from "@gluestack-ui/themed";
 import { Stack, useRouter } from "expo-router";
 import { useState } from "react";
@@ -21,8 +24,8 @@ type Team = {
 
 const teams: Team[] = [
   {
-    key: 1,
     value: "Ceedeez nuts",
+    key: 1,
   },
   {
     value: "Team 2",
@@ -38,12 +41,8 @@ var styles = StyleSheet.create({
   image: {
     width: 50,
     height: 50,
-    alignSelf: "center"
+    alignSelf: "baseline"
   },
-
-  button: {
-    alignSelf: "flex-end"
-  }
 })
 
 export default function App() {
@@ -56,25 +55,33 @@ export default function App() {
     <SafeAreaView style={{ flex: 1, backgroundColor: "#2F2E2E" }}>
       <Stack.Screen
         options={{
-          title: "Home",
+          title: "",
           headerStyle: {
             backgroundColor: "#444444",
             //dropshadow?
           },
           headerLeft: () => (
-            <HStack space="3xl">
+            <HStack space="4xl">
               <Button
-                style={styles.button}
                 variant="link"
                 onPress={() => router.push("/(app)/settings")}
               >
-                <Icon as={SettingsIcon} size="xl" color="#EE0c0c"></Icon>
+                <Icon as={SettingsIcon} size="xl" color="#EE0c0c" />
               </Button>
-              <Image
-                style={styles.image}
-                resizeMode="contain"
-                source={require("../../assets/images/logo.png")}
-                alt="image" />
+              <Box>
+                <HStack space="lg">
+                  <Image
+                    style={styles.image}
+                    resizeMode="contain"
+                    source={require("../../assets/images/logo.png")}
+                    alt="image" />
+                  <Heading fontSize="$lg" color="#EE0C0C" textAlign="center">Fantasy Football Insights</Heading>
+                </HStack>
+              </Box>
+              <Button
+                variant="link">
+                <Icon as={MenuIcon} size="xl" color="#EE0c0c" />
+              </Button>
             </HStack>
           ),
           headerTintColor: "#EE0C0C",
@@ -85,7 +92,7 @@ export default function App() {
         }}
       />
 
-      <VStack
+      < VStack
         space="xl"
         flex={1}
         alignItems="center"
@@ -125,7 +132,7 @@ export default function App() {
             <ButtonText>Draft</ButtonText>
           </Button>
         </HStack>
-      </VStack>
-    </SafeAreaView>
+      </VStack >
+    </SafeAreaView >
   );
 }
