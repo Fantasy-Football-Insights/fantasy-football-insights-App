@@ -10,7 +10,7 @@ import {
 } from "@gluestack-ui/themed";
 import { Stack, useRouter } from "expo-router";
 import { useState } from "react";
-import { SafeAreaView } from "react-native";
+import { Image, SafeAreaView, StyleSheet } from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
 import { useAuth } from "../../components/context/AuthContext";
 
@@ -34,6 +34,18 @@ const teams: Team[] = [
   },
 ];
 
+var styles = StyleSheet.create({
+  image: {
+    width: 50,
+    height: 50,
+    alignSelf: "center"
+  },
+
+  button: {
+    alignSelf: "flex-end"
+  }
+})
+
 export default function App() {
   const { session } = useAuth();
   const router = useRouter();
@@ -50,12 +62,20 @@ export default function App() {
             //dropshadow?
           },
           headerLeft: () => (
-            <Button
-              variant="link"
-              onPress={() => router.push("/(app)/settings")}
-            >
-              <Icon as={SettingsIcon} size="xl" color="#EE0c0c"></Icon>
-            </Button>
+            <HStack space="3xl">
+              <Button
+                style={styles.button}
+                variant="link"
+                onPress={() => router.push("/(app)/settings")}
+              >
+                <Icon as={SettingsIcon} size="xl" color="#EE0c0c"></Icon>
+              </Button>
+              <Image
+                style={styles.image}
+                resizeMode="contain"
+                source={require("../../assets/images/logo.png")}
+                alt="image" />
+            </HStack>
           ),
           headerTintColor: "#EE0C0C",
           headerTitleStyle: {
