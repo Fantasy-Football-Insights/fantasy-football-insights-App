@@ -41,4 +41,3 @@ expo-env.d.ts
 # @end expo-cli
 
 # ignore baseurl file in config directory
-config/
