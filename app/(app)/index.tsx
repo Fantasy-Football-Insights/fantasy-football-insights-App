@@ -15,6 +15,7 @@ import { Stack, useRouter } from "expo-router";
 import { useState } from "react";
 import { Image, SafeAreaView, StyleSheet } from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
+import Header from "../../components/context/layout/Header"
 import { useAuth } from "../../components/context/AuthContext";
 
 type Team = {
@@ -53,45 +54,7 @@ export default function App() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#2F2E2E" }}>
-      <Stack.Screen
-        options={{
-          title: "",
-          headerStyle: {
-            backgroundColor: "#444444",
-            //dropshadow?
-          },
-          headerLeft: () => (
-            <HStack space="4xl">
-              <Button
-                variant="link"
-                onPress={() => router.push("/(app)/settings")}
-              >
-                <Icon as={SettingsIcon} size="xl" color="#EE0c0c" />
-              </Button>
-              <Box>
-                <HStack space="lg">
-                  <Image
-                    style={styles.image}
-                    resizeMode="contain"
-                    source={require("../../assets/images/logo.png")}
-                    alt="image" />
-                  <Heading fontSize="$lg" color="#EE0C0C" textAlign="center">Fantasy Football Insights</Heading>
-                </HStack>
-              </Box>
-              <Button
-                variant="link">
-                <Icon as={MenuIcon} size="xl" color="#EE0c0c" />
-              </Button>
-            </HStack>
-          ),
-          headerTintColor: "#EE0C0C",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-          headerTitleAlign: "center",
-        }}
-      />
-
+      <Header/>
       < VStack
         space="xl"
         flex={1}
@@ -128,7 +91,10 @@ export default function App() {
           >
             <ButtonText>Trade</ButtonText>
           </Button>
-          <Button backgroundColor="#999999">
+          <Button 
+            backgroundColor="#999999"
+            onPress={() => router.push("/(app)/draft/")}
+          >
             <ButtonText>Draft</ButtonText>
           </Button>
         </HStack>
