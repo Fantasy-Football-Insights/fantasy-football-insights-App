@@ -54,7 +54,7 @@ export default function App() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#2F2E2E" }}>
-      <Header/>
+      <Header />
       < VStack
         space="xl"
         flex={1}
@@ -91,7 +91,7 @@ export default function App() {
           >
             <ButtonText>Trade</ButtonText>
           </Button>
-          <Button 
+          <Button
             backgroundColor="#999999"
             onPress={() => router.push("/(app)/draft/")}
           >
