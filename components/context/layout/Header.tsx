@@ -42,7 +42,8 @@ const Header = () => {
                             </HStack>
                         </Box>
                         <Button
-                            variant="link">
+                            variant="link"
+                            onPress={() => router.push("/(app)/")}>
                             <Icon as={MenuIcon} size="xl" color="#EE0c0c" />
                         </Button>
                     </HStack>
