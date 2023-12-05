@@ -1,4 +1,4 @@
-import { Box, Text, Button, ButtonText } from "@gluestack-ui/themed"
+import { Box, Text } from "@gluestack-ui/themed"
 import { SafeAreaView } from "react-native"
 import Header from "../../../components/context/layout/Header"
 import { Stack, useRouter } from "expo-router";

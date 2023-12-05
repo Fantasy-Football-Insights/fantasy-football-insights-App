@@ -1,22 +1,16 @@
 import {
     Button,
-    Box,
     ButtonText,
     ChevronDownIcon,
     HStack,
-    Icon,
     SearchIcon,
-    SettingsIcon,
     VStack,
-    Heading,
-    MenuIcon
 } from "@gluestack-ui/themed";
-import { Stack, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import { useState } from "react";
-import { Image, SafeAreaView, StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 import { SelectList } from "react-native-dropdown-select-list";
 import Header from "../../components/context/layout/Header"
-import { useAuth } from "../../components/context/AuthContext";
 
 type Team = {
     value: string;
@@ -47,7 +41,6 @@ var styles = StyleSheet.create({
 })
 
 export default function App() {
-    const { session } = useAuth();
     const router = useRouter();
 
     const [selected, setSelected] = useState("");
