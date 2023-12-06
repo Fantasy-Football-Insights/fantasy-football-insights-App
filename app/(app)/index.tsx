@@ -74,7 +74,8 @@ export default function App() {
                     inputStyles={{ color: "white" }}
                     placeholder="Select Team"
                 />
-                <Button size="xl" backgroundColor="#999999">
+                <Button size="xl" backgroundColor="#999999"
+                    onPress={() => router.push("/(app)/addTeam/")}>
                     <ButtonText>Add Team</ButtonText>
                 </Button>
                 <HStack space="lg">
