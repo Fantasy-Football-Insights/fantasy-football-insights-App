@@ -1,4 +1,3 @@
-import { Box, Text } from "@gluestack-ui/themed";
 import { Stack } from "expo-router";
 import { SafeAreaView } from "react-native";
 export default function index() {

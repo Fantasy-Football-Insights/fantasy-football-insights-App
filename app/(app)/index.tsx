@@ -5,6 +5,8 @@ import {
     HStack,
     SearchIcon,
     VStack,
+    Box,
+    Image
 } from "@gluestack-ui/themed";
 import { useRouter } from "expo-router";
 import { useState } from "react";
@@ -32,24 +34,25 @@ const teams: Team[] = [
     },
 ];
 
-var styles = StyleSheet.create({
-    image: {
-        width: 50,
-        height: 50,
-        alignSelf: "baseline"
-    },
-})
 
 export default function App() {
     const router = useRouter();
 
     const [selected, setSelected] = useState("");
 
+    var styles = StyleSheet.create({
+        image: {
+            width: 400,
+            height: 400,
+            position: "relative"
+        }
+    })
+
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: "#2F2E2E" }}>
             <Header />
             < VStack
-                space="xl"
+                space="3xl"
                 flex={1}
                 alignItems="center"
                 justifyContent="center"
@@ -74,25 +77,25 @@ export default function App() {
                     inputStyles={{ color: "white" }}
                     placeholder="Select Team"
                 />
-                <Button size="xl" backgroundColor="#999999"
-                    onPress={() => router.push("/(app)/addTeam/")}>
-                    <ButtonText>Add Team</ButtonText>
-                </Button>
-                <HStack space="lg">
+                <HStack alignContent="center" space="2xl">
                     <Button
                         backgroundColor="#999999"
                         onPress={() => router.push("/(app)/trades/")}
                     >
-                        <ButtonText>Trade</ButtonText>
+                        <ButtonText>   Trade   </ButtonText>
                     </Button>
                     <Button
                         backgroundColor="#999999"
-                        onPress={() => router.push("/(app)/draft/")}
-                    >
-                        <ButtonText>Draft</ButtonText>
+                        onPress={() => router.push("/(app)/addTeam/")}>
+                        <ButtonText>Add Team</ButtonText>
                     </Button>
                 </HStack>
             </VStack >
+            <Box alignItems="center">
+                <Image
+                    style={styles.image}
+                    source={require("../(settings)/Jamarr.png")} />
+            </Box>
         </SafeAreaView >
     );
 }
