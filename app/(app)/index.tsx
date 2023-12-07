@@ -75,7 +75,7 @@ export default function App() {
                     placeholder="Select Team"
                 />
                 <Button size="xl" backgroundColor="#999999"
-                    onPress={() => router.push("/(app)/addTeam/")}>
+                    onPress={() => router.push("/(app)/")}>
                     <ButtonText>Add Team</ButtonText>
                 </Button>
                 <HStack space="lg">
