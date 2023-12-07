@@ -110,9 +110,6 @@ export default function Settings() {
             <ButtonText>Delete Account</ButtonText>
           </Button>
         </VStack>
-        <Image
-          style={styles.image}
-          source={require("../../(settings)/jett.png")} />
 
         {/*Creates modal for Android*/}
         < Modal
@@ -141,7 +138,11 @@ export default function Settings() {
           </ModalContent>
         </Modal >
       </Box >
+      <Box alignItems="center">
+        <Image
+          style={styles.image}
+          source={require("../../(settings)/jett.png")} />
+      </Box>
     </SafeAreaView >
-
   )
 }
