@@ -19,6 +19,7 @@ import {
 import { useAsync } from "@react-hookz/web";
 import { useIsFocused } from "@react-navigation/native";
 import { Stack, useRouter } from "expo-router";
+import { Drawer } from 'expo-router/drawer';
 import { useEffect, useState } from "react";
 import { FlatList, RefreshControl, TouchableOpacity } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -78,6 +79,16 @@ export default function App() {
           headerTitleAlign: "center",
         }}
       />
+      {/*
+      <Drawer>
+        <Drawer.Screen
+          name="index"
+          options={{
+            drawerLabel: "Home",
+            title: "overview"
+          }} />
+      </Drawer>*/
+      }
       {rosters && rosters.length > 0 && (
         <FlatList
           data={rosters}
