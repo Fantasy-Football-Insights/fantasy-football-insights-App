@@ -18,7 +18,7 @@ import {
   VStack,
 } from "@gluestack-ui/themed";
 import { useAsync } from "@react-hookz/web";
-import { Stack, router } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Keyboard, SafeAreaView, TouchableWithoutFeedback } from "react-native";
@@ -33,6 +33,7 @@ type FormData = {
 
 export default function index() {
   const [createTeamState, createTeamActions] = useAsync(createRoster);
+  const router = useRouter();
 
   const {
     handleSubmit,
@@ -56,7 +57,12 @@ export default function index() {
 
   useEffect(() => {
     if (createTeamState.status === "success" && createTeamState.result) {
-      router.push(`/(app)/rosters/${createTeamState.result.id}`);
+      router.replace({
+        pathname: `/(app)/rosters/${createTeamState.result.id}`,
+        params: {
+          teamName: createTeamState.result.teamName,
+        },
+      });
     }
   });
 
