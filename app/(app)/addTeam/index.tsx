@@ -22,7 +22,7 @@ import { Stack, useRouter } from "expo-router";
 import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Keyboard, SafeAreaView, TouchableWithoutFeedback } from "react-native";
-import { CreateRosterRequest, createRoster } from "../../api/roster";
+import { createRoster } from "../../api/roster";
 
 type FormData = {
   teamName: string;
@@ -46,13 +46,12 @@ export default function index() {
   });
 
   const onSubmit = (data: FormData) => {
-    const formData: CreateRosterRequest = {
+    createTeamActions.execute({
       teamName: data.teamName,
       leagueSize: Number(data.numberOfTeams),
       draftPosition: Number(data.draftPosition),
       pickPreference: data.posPreference,
-    };
-    createTeamActions.execute(formData);
+    });
   };
 
   useEffect(() => {
