@@ -1,6 +1,7 @@
 import { Stack } from "expo-router";
 import { SafeAreaView } from "react-native";
 export default function index() {
+  //wk file
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#2F2E2E" }}>
       <Stack.Screen
