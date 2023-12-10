@@ -1,55 +1,62 @@
 import {
+  AddIcon,
   Box,
   Button,
-  ButtonText,
-  ChevronDownIcon,
+  ChevronRightIcon,
+  Divider,
+  Fab,
+  FabIcon,
+  FabLabel,
   HStack,
+  Heading,
   Icon,
-  Image,
-  SearchIcon,
   SettingsIcon,
+  Spinner,
+  Text,
   VStack,
 } from "@gluestack-ui/themed";
+import { useAsync } from "@react-hookz/web";
+import { useIsFocused } from "@react-navigation/native";
 import { Stack, useRouter } from "expo-router";
-import { useState } from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
-import { SelectList } from "react-native-dropdown-select-list";
-
-type Team = {
-  value: string;
-  key: number;
-};
-
-const teams: Team[] = [
-  {
-    value: "Ceedeez nuts",
-    key: 1,
-  },
-  {
-    value: "Team 2",
-    key: 2,
-  },
-  {
-    value: "Team 3",
-    key: 3,
-  },
-];
+import { useEffect, useState } from "react";
+import { FlatList, RefreshControl, TouchableOpacity } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { RosterModel, getRosters } from "../api/roster";
 
 export default function App() {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
+  const [rosters, setRosters] = useState<RosterModel[]>();
+  const [getRostersState, getRostersAction] = useAsync(getRosters);
+  const [getRefreshState, getRefreshAction] = useAsync(getRosters);
 
-  const [selected, setSelected] = useState("");
+  const isFocused = useIsFocused();
 
-  var styles = StyleSheet.create({
-    image: {
-      width: 400,
-      height: 400,
-      position: "relative",
-    },
-  });
+  useEffect(() => {
+    if (isFocused) {
+      getRostersAction.execute();
+    }
+  }, [isFocused]);
+
+  useEffect(() => {
+    if (getRostersState.status === "success" && getRostersState.result) {
+      setRosters(getRostersState.result);
+      console.log(getRostersState.result);
+    }
+  }, [getRostersState.status, getRostersState.result]);
+
+  useEffect(() => {
+    if (
+      getRefreshState.status === "success" &&
+      getRefreshState.result &&
+      getRefreshState.result !== rosters
+    ) {
+      setRosters(getRefreshState.result);
+    }
+  }, [getRefreshState.status, getRefreshState.result]);
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#2F2E2E" }}>
+    <Box flex={1} bg="#2F2E2E">
       <Stack.Screen
         options={{
           title: "Home",
@@ -71,53 +78,80 @@ export default function App() {
           headerTitleAlign: "center",
         }}
       />
-      <VStack
-        space="3xl"
-        flex={1}
-        alignItems="center"
-        justifyContent="center"
-        m={4}
-        backgroundColor="#2f2e2e"
+      {rosters && rosters.length > 0 && (
+        <FlatList
+          data={rosters}
+          keyExtractor={(roster: RosterModel) => roster.id.toString()}
+          refreshControl={
+            <RefreshControl
+              refreshing={getRefreshState.status === "loading"}
+              onRefresh={getRefreshAction.execute}
+            />
+          }
+          renderItem={({ item: roster }) => (
+            <TouchableOpacity
+              onPress={() =>
+                router.push({
+                  pathname: `/(app)/rosters/[id]`,
+                  params: { id: roster.id, teamName: roster.teamName },
+                })
+              }
+            >
+              <VStack space="md" mx={"$4"} ml={"$8"} mb={"$8"}>
+                <HStack
+                  justifyContent="space-between"
+                  alignItems="center"
+                  mt={"$4"}
+                >
+                  <Heading color="white">{roster.teamName}</Heading>
+                  <ChevronRightIcon color="#EE0C0C" size="lg" />
+                </HStack>
+                <HStack justifyContent="space-between">
+                  <Text color="lightgray">
+                    League Size: {roster.leagueSize}
+                  </Text>
+                  <Text color="lightgray">
+                    Draft Pos: {roster.draftPosition}
+                  </Text>
+                </HStack>
+              </VStack>
+              <Divider ml={"$8"} />
+            </TouchableOpacity>
+          )}
+        />
+      )}
+
+      {getRostersState.status === "loading" && !rosters && (
+        <Box
+          flex={1}
+          alignItems="center"
+          justifyContent="center"
+          mb={insets.bottom}
+        >
+          <Spinner color={"#EE0C0C"} size={"large"} />
+        </Box>
+      )}
+      {rosters && rosters.length < 1 && (
+        <Box
+          flex={1}
+          alignItems="center"
+          justifyContent="center"
+          mb={insets.bottom}
+        >
+          <Text color={"white"}>You have not created any teams yet.</Text>
+        </Box>
+      )}
+
+      <Fab
+        bg="#EE0C0C"
+        size="md"
+        placement={"bottom right"}
+        mb={insets.bottom}
+        onPress={() => router.push("/(app)/addTeam")}
       >
-        <SelectList
-          onSelect={() => router.push(`/(app)/rosters/${selected}`)}
-          setSelected={setSelected}
-          data={teams}
-          maxHeight={150}
-          arrowicon={<ChevronDownIcon size={"sm"} color={"white"} />}
-          searchicon={<SearchIcon size={"sm"} color={"white"} />}
-          search={false}
-          boxStyles={{
-            borderColor: "#EE0C0C",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-          dropdownStyles={{ borderColor: "#EE0C0C" }}
-          dropdownTextStyles={{ color: "white" }}
-          inputStyles={{ color: "white" }}
-          placeholder="Select Team"
-        />
-        <HStack alignContent="center" space="2xl">
-          <Button
-            backgroundColor="#999999"
-            onPress={() => router.push("/(app)/trades")}
-          >
-            <ButtonText> Trade </ButtonText>
-          </Button>
-          <Button
-            backgroundColor="#999999"
-            onPress={() => router.push("/(app)/addTeam")}
-          >
-            <ButtonText>Add Team</ButtonText>
-          </Button>
-        </HStack>
-      </VStack>
-      <Box alignItems="center">
-        <Image
-          style={styles.image}
-          source={require("../(settings)/Jamarr.png")}
-        />
-      </Box>
-    </SafeAreaView>
+        <FabIcon as={AddIcon} mr={"$1"} />
+        <FabLabel>Add Team</FabLabel>
+      </Fab>
+    </Box>
   );
 }

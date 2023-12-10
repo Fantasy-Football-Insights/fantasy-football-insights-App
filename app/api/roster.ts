@@ -14,7 +14,7 @@ export interface Player {
   drafted: boolean;
 }
 
-export interface Roster {
+export interface RosterModel {
   id: number;
   ownerId: number;
   draftPosition: number;
@@ -31,11 +31,16 @@ export interface CreateRosterRequest {
 }
 
 export const getRosters = async () => {
-  const result = await axios.get<Roster[]>(`${API_URL}/rosters/my`);
+  const result = await axios.get<RosterModel[]>(`${API_URL}/rosters/my`);
   return result.data;
 };
 
 export const createRoster = async (data: CreateRosterRequest) => {
-  const result = await axios.post<Roster>(`${API_URL}/rosters`, data);
+  const result = await axios.post<RosterModel>(`${API_URL}/rosters`, data);
+  return result.data;
+};
+
+export const getSingleRoster = async (id: number | string) => {
+  const result = await axios.get<RosterModel>(`${API_URL}/rosters/${id}`);
   return result.data;
 };
