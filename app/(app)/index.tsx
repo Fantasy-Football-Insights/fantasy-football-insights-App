@@ -140,7 +140,16 @@ export default function App() {
           <Text color={"white"}>You have not created any teams yet.</Text>
         </Box>
       )}
-
+      <Fab
+        bg="#EE0C0C"
+        size="md"
+        placement={"bottom left"}
+        mb={insets.bottom}
+        onPress={() => router.push("/(app)/trades")}
+      >
+        <FabIcon as={AddIcon} mr={"$1"} />
+        <FabLabel>Trade</FabLabel>
+      </Fab>
       <Fab
         bg="#EE0C0C"
         size="md"
