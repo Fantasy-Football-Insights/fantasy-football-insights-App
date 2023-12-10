@@ -1,5 +1,6 @@
 import {
   Box,
+  Divider,
   HStack,
   Heading,
   ScrollView,
@@ -67,52 +68,64 @@ export default function Roster() {
             <Heading color="white" m={"$4"}>
               Draft Picks
             </Heading>
-            <FlatList
-              scrollEnabled={false}
-              data={roster.players as Player[]}
-              keyExtractor={(item: Player, index: number) =>
-                `${index}_${item.name}`
-              }
-              renderItem={({
-                item,
-                index,
-              }: {
-                item: Player;
-                index: number;
-              }) => {
-                const { name, team, mainPos, sznAvgProj } = item;
-                return (
-                  <Box
-                    bgColor="#111111"
-                    py={"$4"}
-                    borderRadius={"$lg"}
-                    m={"$2"}
-                  >
-                    <HStack space="sm">
-                      <Box
-                        alignItems="center"
-                        justifyContent="center"
-                        w={"$16"}
-                        p={"$4"}
-                      >
-                        <Heading color="white">{index + 1}</Heading>
-                      </Box>
-                      <VStack space="xs" flex={1}>
-                        <Heading color="#EE0C0C">{name}</Heading>
-                        <HStack space="xs">
-                          <Text color="white">{team}</Text>
-                          <Text color="white">{mainPos}</Text>
-                        </HStack>
-                      </VStack>
-                      <VStack space="xs" flex={1}>
-                        <Heading color="white">Proj</Heading>
-                        <Text color="white">{sznAvgProj}</Text>
-                      </VStack>
-                    </HStack>
-                  </Box>
-                );
-              }}
-            />
+            <Box m={"$2"} bgColor="#181818" borderRadius={"$md"} py={"$1"}>
+              <FlatList
+                scrollEnabled={false}
+                data={roster.players as Player[]}
+                keyExtractor={(item: Player, index: number) =>
+                  `${index}_${item.name}`
+                }
+                renderItem={({
+                  item,
+                  index,
+                }: {
+                  item: Player;
+                  index: number;
+                }) => {
+                  const { name, team, mainPos, sznAvgProj } = item;
+                  return (
+                    <Box px={"$2"} py={"$1"}>
+                      <HStack space="sm">
+                        <Box
+                          alignItems="center"
+                          justifyContent="center"
+                          w={"$8"}
+                        >
+                          <Heading size="md" color="white">
+                            {index + 1}
+                          </Heading>
+                        </Box>
+
+                        <VStack space="xs" flex={1}>
+                          <Heading size="md" color="#EE0C0C">
+                            {name}
+                          </Heading>
+                          <HStack space="xs">
+                            <Text size="xs" color="white">
+                              {team}
+                            </Text>
+                            <Text size="xs" color="lightgray">
+                              {mainPos}
+                            </Text>
+                          </HStack>
+                        </VStack>
+                        <VStack space="xs" flex={1}>
+                          <Heading size="sm" color="white">
+                            Avg Points
+                          </Heading>
+                          <Text size="xs" color="white">
+                            {sznAvgProj}
+                          </Text>
+                        </VStack>
+                      </HStack>
+                      {index !== roster.players.length - 1 && (
+                        <Divider bgColor="#333333" mt={"$1"} />
+                      )}
+                    </Box>
+                  );
+                }}
+              />
+            </Box>
             <Heading color="white" alignSelf="flex-end" m={"$4"}>
               Total Projected:{" "}
               {roster.players
