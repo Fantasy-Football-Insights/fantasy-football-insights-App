@@ -41,7 +41,6 @@ export default function App() {
   useEffect(() => {
     if (getRostersState.status === "success" && getRostersState.result) {
       setRosters(getRostersState.result);
-      console.log(getRostersState.result);
     }
   }, [getRostersState.status, getRostersState.result]);
 
