@@ -11,6 +11,7 @@ import {
   Heading,
   Icon,
   SettingsIcon,
+  ShareIcon,
   Spinner,
   Text,
   VStack,
@@ -150,6 +151,16 @@ export default function App() {
       >
         <FabIcon as={AddIcon} mr={"$1"} />
         <FabLabel>Add Team</FabLabel>
+      </Fab>
+      <Fab
+        bg="#EE0C0C"
+        size="md"
+        placement={"bottom left"}
+        mb={insets.bottom}
+        onPress={() => router.push("/(app)/trades")}
+      >
+        <FabIcon as={ShareIcon} mr={"$1"} />
+        <FabLabel>Trade</FabLabel>
       </Fab>
     </Box>
   );
