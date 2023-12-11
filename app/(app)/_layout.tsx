@@ -1,8 +1,10 @@
 import { Redirect, Stack } from "expo-router";
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Drawer } from 'expo-router/drawer';
 
 import { useAuth } from "../../components/context/AuthContext";
 
-const StackLayout = () => {
+const Layout = () => {
   const { authenticated } = useAuth();
 
   // if user is not authenticated, return to index screen
@@ -11,7 +13,20 @@ const StackLayout = () => {
     return <Redirect href={"/home"} />;
   }
 
-  return <Stack />;
+  return(
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Drawer>
+        <Drawer.Screen
+          name="index" // This is the name of the page and must match the url from root
+          options={{
+            drawerLabel: 'Home',
+            title: 'Home',
+          }}
+        />
+      </Drawer>
+    </GestureHandlerRootView>
+  );
+  
 
   return (
     <Stack>
@@ -34,4 +49,4 @@ const StackLayout = () => {
   );
 };
 
-export default StackLayout;
+export default Layout;
