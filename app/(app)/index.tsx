@@ -93,6 +93,7 @@ export default function App() {
         <FlatList
           data={rosters}
           keyExtractor={(roster: RosterModel) => roster.id.toString()}
+          contentInsetAdjustmentBehavior="automatic"
           refreshControl={
             <RefreshControl
               refreshing={getRefreshState.status === "loading"}
@@ -100,34 +101,36 @@ export default function App() {
             />
           }
           renderItem={({ item: roster }) => (
-            <TouchableOpacity
-              onPress={() =>
-                router.push({
-                  pathname: `/(app)/rosters/[id]`,
-                  params: { id: roster.id, teamName: roster.teamName },
-                })
-              }
-            >
-              <VStack space="md" mx={"$4"} ml={"$8"} mb={"$8"}>
-                <HStack
-                  justifyContent="space-between"
-                  alignItems="center"
-                  mt={"$4"}
-                >
-                  <Heading color="white">{roster.teamName}</Heading>
-                  <ChevronRightIcon color="#EE0C0C" size="lg" />
-                </HStack>
-                <HStack justifyContent="space-between">
-                  <Text color="lightgray">
-                    League Size: {roster.leagueSize}
-                  </Text>
-                  <Text color="lightgray">
-                    Draft Pos: {roster.draftPosition}
-                  </Text>
-                </HStack>
-              </VStack>
-              <Divider ml={"$8"} />
-            </TouchableOpacity>
+            <>
+              <TouchableOpacity
+                onPress={() =>
+                  router.push({
+                    pathname: `/(app)/rosters/[id]`,
+                    params: { id: roster.id, teamName: roster.teamName },
+                  })
+                }
+              >
+                <VStack space="md" mx={"$4"} ml={"$8"} mb={"$6"}>
+                  <HStack
+                    justifyContent="space-between"
+                    alignItems="center"
+                    mt={"$2"}
+                  >
+                    <Heading color="white">{roster.teamName}</Heading>
+                    <ChevronRightIcon color="#EE0C0C" size="lg" />
+                  </HStack>
+                  <HStack justifyContent="space-between">
+                    <Text color="lightgray">
+                      League Size: {roster.leagueSize}
+                    </Text>
+                    <Text color="lightgray">
+                      Draft Pos: {roster.draftPosition}
+                    </Text>
+                  </HStack>
+                </VStack>
+              </TouchableOpacity>
+              <Divider ml={"$8"} bgColor="#555555" />
+            </>
           )}
         />
       )}
