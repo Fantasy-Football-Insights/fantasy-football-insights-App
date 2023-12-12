@@ -53,7 +53,12 @@ We faced many issues throughout production of our application. These include:
 - Version control became an issue at times if we forgot to pull or push changes made.
  
 ### 4.2 How we dealt with Issues
-We resolved issues through researching documentation, finding YouTube videos to assist with our development, and 
+We resolved issues through researching documentation, finding YouTube videos to assist with our development, and using forums to assist in gaining the knowledge required to be able to implement what we want.
+Furthermore, remembering some of the principles of modularity in programming helped us remember to make our components reusable.
+We experimented with learning small projects on the side to learn a lot of the web/app development sequences that we were not used to using.
+We settled on the most applicable aspects of fantasy football to decide which positions and methods of selecting were most valuable to fantasy football players.
+We used documentation and outside resources to learn how to write our unit tests for the TypeScript project.
+Despite this being an issue, it also brought us new knowledge of how to handle merge conflicts.
 
 ## 5. Project Links
 We stored all of our code in two GitHub repositories. One for the App portion of our project and another for the API portion. 
