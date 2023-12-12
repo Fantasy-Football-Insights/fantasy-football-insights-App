@@ -40,7 +40,7 @@ The initial plan for our application was to create a fantasy football applicatio
 
 ## 3. What we Accomplished
 ### 3.1 Accomplishments
-While we unfortunately did not accomplish everything we had set to do develop in our application, we did manage to complete most of our plans. We were able to develop a working algorithm where users can input the size of their league, their draft position and the position they prioritize with their first pick to predict the best possible team based on those inputs. We were also able to get a working login and registration screen, with functioning logout and delete account features as well. We were able to get some functionality of a trade analyzer as well, but it is not the state we wanted it to be in. Overall, we accomplished much of what we planned and hope to continue to refine the application after the semester is over. 
+While we unfortunately did not accomplish everything we had set to develop in our application, we did manage to complete most of our plans. We were able to develop a working algorithm where users can input the size of their league, their draft position and the position they prioritize with their first pick to predict the best possible team based on those inputs. We were also able to get a working login and registration screen, with functioning logout and delete account features as well. We were able to get some functionality of a trade analyzer as well, but it is not the state we wanted it to be in. Overall, we accomplished much of what we planned and hope to continue to refine the application after the semester is over. 
 
 ## 4. Issue Overview
 ### 4.1 Issues we Encountered
