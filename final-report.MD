@@ -53,6 +53,7 @@ We faced many issues throughout production of our application. These include:
 - Version control became an issue at times if we forgot to pull or push changes made.
  
 ### 4.2 How we dealt with Issues
+We resolved issues through researching documentation, finding YouTube videos to assist with our development, and 
 
 ## 5. Project Links
 We stored all of our code in two GitHub repositories. One for the App portion of our project and another for the API portion. 
