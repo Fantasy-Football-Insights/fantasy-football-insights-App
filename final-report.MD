@@ -46,8 +46,8 @@ While we unfortunately did not accomplish everything we had set to develop in ou
 ### 4.1 Issues we Encountered
 We faced many issues throughout production of our application. These include: 
 - Working with a new language (Typescript), framework (React Native) and development environment (Expo) for the first time.
-- In the frontend, creating components for specific functions and working to combine each component as needed. 
-- Making calls to the API from the frontend, specifically generating the correct fetch sequence.
+- In the front end, creating components for specific functions and working to combine each component as needed. 
+- Making calls to the API from the front end, specifically generating the correct fetch sequence.
 - Developing an algorithm was challenging at times, specifically determining the best possible factors to include.
 - Creating unit tests were also challenging as nobody had much experience creating tests or working with API's.
 - Version control became an issue at times if we forgot to pull or push changes made.
